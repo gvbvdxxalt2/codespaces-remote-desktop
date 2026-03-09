@@ -324,3 +324,6 @@ Fontconfig error: Cannot load default config file: File not found
 (pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.742: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
 
 (pcmanfm:6406): Gtk-WARNING **: 18:41:04.745: gtk_menu_detach(): menu is not attached
+env GDK_BACKEND=x11 audacity '/workspaces/codespaces-remote-desktop/WindowsSound.wav' 
+/usr/bin/google-chrome-stable 'file:///home/codespace/Desktop/xp-wallpaper.jpg' 
+Opening in existing browser session.

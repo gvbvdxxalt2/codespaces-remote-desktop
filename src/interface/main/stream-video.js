@@ -177,6 +177,7 @@ document.addEventListener("keydown",(event) => {
                 key: event.key,
                 down: true
             }));
+            event.preventDefault();
         }catch(e){}
     }
 });
@@ -189,6 +190,7 @@ document.addEventListener("keyup",(event) => {
                 key: event.key,
                 down: false
             }));
+            event.preventDefault();
         }catch(e){}
     }
 });
