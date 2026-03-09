@@ -1,8 +1,16 @@
 #!/bin/bash
-echo "📦 Installing Desktop Environment Layers..."
+echo "🔄 Fixing repository GPG errors and updating..."
 
-# Update and install core GUI components
-sudo apt-get update
+# Disable the broken Yarn repo to stop it from blocking updates
+sudo rm -f /etc/apt/sources.list.d/yarn.list
+
+# Clean and update
+sudo apt-get clean
+sudo apt-get update -y
+
+echo "📦 Installing Desktop Environment Layers for Ubuntu Noble..."
+
+# We use libasound2t64 and include specific dependencies for native builds
 sudo apt-get install -y \
     xvfb \
     fluxbox \
@@ -14,6 +22,13 @@ sudo apt-get install -y \
     pavucontrol \
     ffmpeg \
     libnss3 \
-    libasound2
+    libasound2t64 \
+    build-essential \
+    python3 \
+    libxtst-dev \
+    libpng-dev \
+    libx11-dev \
+    libxi-dev \
+    chromium
 
 echo "✅ System dependencies installed."

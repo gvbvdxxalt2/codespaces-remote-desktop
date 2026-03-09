@@ -1,0 +1,33 @@
+{
+  "name": "codespaces-remote-desktop",
+  "version": "1.0.0",
+  "description": "Remote desktop like environment in github codespaces",
+  "main": "electron-src/electron-main.js",
+  "repository": "https://github.com/gvbvdxxalt2/codespaces-remote-desktop",
+  "author": "Gvbvdxx",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@electron/rebuild": "^4.0.3",
+    "concurrently": "^9.2.1",
+    "copy-webpack-plugin": "^14.0.0",
+    "electron": "^40.8.0",
+    "html-webpack-plugin": "^5.6.6",
+    "nodemon": "^3.1.10",
+    "process": "^0.11.10",
+    "robotjs": "https://github.com/octalmage/robotjs",
+    "simple-peer": "^9.11.1",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-license-plugin": "^4.5.1",
+    "ws": "^8.19.0"
+  },
+  "scripts": {
+    "rebuild": "electron-rebuild -f -w robotjs",
+    "post-install": "chmod +x * && ./setup-desktop.sh && ./start-desktop.sh && yarn rebuild",
+    "start": "chmod +x * && ./start.sh",
+    "build:watch": "webpack --watch",
+    "electron:start": "ELECTRON_DISABLE_SECURITY_WARNINGS=true DISPLAY=:99 NO_AT_BRIDGE=1 electron .",
+    "dev": "concurrently --kill-others --names \"WEBPACK,ELECTRON\" -c \"blue,green\" \"npm run build:watch\" \"npm run electron:start\""
+  }
+}
