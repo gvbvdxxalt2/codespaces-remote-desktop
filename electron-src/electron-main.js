@@ -2,6 +2,7 @@ var electron = require('electron');
 var app = electron.app;
 var BrowserWindow = electron.BrowserWindow;
 var session = electron.session;
+var desktopCapturer = electron.desktopCapturer;
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 

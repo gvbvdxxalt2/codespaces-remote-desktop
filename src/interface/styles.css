@@ -1,0 +1,73 @@
+
+body {
+    background: #2e2e2e;
+    color: #ededed;
+    font-family: arial;
+}
+
+
+
+.button {
+  all: unset;
+  padding: 5px 5px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border-radius: 3px;
+}
+
+.button:hover {
+  background: rgba(117, 117, 117, 0.5);
+  cursor: pointer;
+}
+
+.startButton {
+  font-size: 30px;
+  font-weight: bold;
+  background: rgba(9, 255, 0, 0.5);
+  width: fit-content;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 3px 3px;
+  border-radius: 5px;
+  color: #005416;
+
+  gap: 10;
+  user-select: none;
+  cursor: pointer;
+}
+
+.startButton:hover {
+  background: rgba(9, 255, 0, 0.7);
+}
+
+.middleOfScreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loadingSpinnerGif {
+    width: 100px;
+    height: 100px;
+    image-rendering: pixelated;
+    user-select: none;
+    pointer-events: none;
+}
+
+.rdScreenCanvas {
+  image-rendering: pixelated;
+  user-select: none;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: #000000;
+  min-width: 100px;
+  min-height: 100px;
+}

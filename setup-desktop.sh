@@ -29,6 +29,8 @@ sudo apt-get install -y \
     libpng-dev \
     libx11-dev \
     libxi-dev \
+    x11-xserver-utils \
+    lxpanel \
     chromium
 
 echo "✅ System dependencies installed."
