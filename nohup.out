@@ -278,3 +278,49 @@ Fontconfig error: Cannot load default config file: File not found
 (pcmanfm:6406): GLib-GIO-CRITICAL **: 18:40:30.644: GFileInfo created without standard::is-backup
 
 (pcmanfm:6406): GLib-GIO-CRITICAL **: 18:40:30.644: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:6406): Gtk-WARNING **: 18:41:00.738: Theme parsing error: <data>:2:27: The style property GtkWidget:focus-padding is deprecated and shouldn't be used anymore. It will be removed in a future version
+
+(pcmanfm:6406): Gtk-WARNING **: 18:41:00.738: Theme parsing error: <data>:3:30: The style property GtkWidget:focus-line-width is deprecated and shouldn't be used anymore. It will be removed in a future version
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.738: GFileInfo created without standard::edit-name
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.738: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.739: GFileInfo created without standard::size
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.739: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.739: GFileInfo created without standard::content-type
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.739: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.739: GFileInfo created without standard::is-symlink
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.739: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.739: GFileInfo created without standard::is-backup
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.739: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.740: GFileInfo created without standard::edit-name
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.742: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.742: GFileInfo created without standard::size
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.742: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.742: GFileInfo created without standard::is-symlink
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.742: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.742: GFileInfo created without standard::is-hidden
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.742: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.742: GFileInfo created without standard::is-backup
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:41:00.742: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:6406): Gtk-WARNING **: 18:41:04.745: gtk_menu_detach(): menu is not attached
