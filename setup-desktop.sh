@@ -10,6 +10,8 @@ sudo apt-get update -y
 
 echo "📦 Installing Desktop Environment Layers for Ubuntu Noble..."
 
+sudo apt-get install -y libxtst-dev libx11-dev build-essential
+
 # We use libasound2t64 and include specific dependencies for native builds
 sudo apt-get install -y \
     xvfb \
@@ -30,7 +32,20 @@ sudo apt-get install -y \
     libx11-dev \
     libxi-dev \
     x11-xserver-utils \
+    dunst \
+    feh \
+    nitrogen \
     lxpanel \
-    chromium
+    dbus-x11 \
+    dmz-cursor-theme \
+    pcmanfm \
+    chromium \
+    chromium-browser \
+    gimp \
+    audacity
+
+echo "🌐 Installing google chrome."
+
+./install-chrome.sh
 
 echo "✅ System dependencies installed."

@@ -1,0 +1,197 @@
+** Message: 18:08:42.102: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:176104): WARNING **: 18:08:42.106: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:176104): GVFS-RemoteVolumeMonitor-WARNING **: 18:08:42.325: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:08:42.639: GFileInfo created without standard::edit-name
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:08:42.639: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:08:42.639: GFileInfo created without standard::size
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:08:42.639: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:08:42.639: GFileInfo created without standard::is-symlink
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:08:42.639: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:08:42.639: GFileInfo created without standard::is-hidden
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:08:42.639: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:08:42.639: GFileInfo created without standard::is-backup
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:08:42.639: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.451: GFileInfo created without standard::edit-name
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.451: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.451: GFileInfo created without standard::size
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.451: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.451: GFileInfo created without standard::content-type
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.452: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.452: GFileInfo created without standard::is-symlink
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.452: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.452: GFileInfo created without standard::is-backup
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.452: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:176104): Gtk-WARNING **: 18:09:22.459: Theme parsing error: <data>:2:27: The style property GtkWidget:focus-padding is deprecated and shouldn't be used anymore. It will be removed in a future version
+
+(pcmanfm:176104): Gtk-WARNING **: 18:09:22.460: Theme parsing error: <data>:3:30: The style property GtkWidget:focus-line-width is deprecated and shouldn't be used anymore. It will be removed in a future version
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.461: GFileInfo created without standard::edit-name
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.461: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.461: GFileInfo created without standard::size
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.461: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.461: GFileInfo created without standard::is-symlink
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.461: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.462: GFileInfo created without standard::is-hidden
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.462: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.463: GFileInfo created without standard::is-backup
+
+(pcmanfm:176104): GLib-GIO-CRITICAL **: 18:09:22.463: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:176104): Gtk-WARNING **: 18:09:26.603: gtk_menu_detach(): menu is not attached
+** Message: 18:10:12.757: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:177635): WARNING **: 18:10:12.762: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:177635): GVFS-RemoteVolumeMonitor-WARNING **: 18:10:12.971: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:177635): GLib-GIO-CRITICAL **: 18:10:13.111: GFileInfo created without standard::edit-name
+
+(pcmanfm:177635): GLib-GIO-CRITICAL **: 18:10:13.111: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:177635): GLib-GIO-CRITICAL **: 18:10:13.111: GFileInfo created without standard::size
+
+(pcmanfm:177635): GLib-GIO-CRITICAL **: 18:10:13.111: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:177635): GLib-GIO-CRITICAL **: 18:10:13.111: GFileInfo created without standard::is-symlink
+
+(pcmanfm:177635): GLib-GIO-CRITICAL **: 18:10:13.111: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:177635): GLib-GIO-CRITICAL **: 18:10:13.111: GFileInfo created without standard::is-hidden
+
+(pcmanfm:177635): GLib-GIO-CRITICAL **: 18:10:13.112: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:177635): GLib-GIO-CRITICAL **: 18:10:13.112: GFileInfo created without standard::is-backup
+
+(pcmanfm:177635): GLib-GIO-CRITICAL **: 18:10:13.112: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+** Message: 18:12:10.045: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:179328): WARNING **: 18:12:10.045: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:179328): GVFS-RemoteVolumeMonitor-WARNING **: 18:12:10.266: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:10.397: GFileInfo created without standard::edit-name
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:10.397: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:10.397: GFileInfo created without standard::size
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:10.397: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:10.397: GFileInfo created without standard::is-symlink
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:10.397: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:10.397: GFileInfo created without standard::is-hidden
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:10.397: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:10.397: GFileInfo created without standard::is-backup
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:10.397: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.176: GFileInfo created without standard::edit-name
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.176: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.177: GFileInfo created without standard::size
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.178: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.178: GFileInfo created without standard::content-type
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.178: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.178: GFileInfo created without standard::is-symlink
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.178: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.179: GFileInfo created without standard::is-backup
+
+(pcmanfm:179328): Gtk-WARNING **: 18:12:59.178: Theme parsing error: <data>:2:27: The style property GtkWidget:focus-padding is deprecated and shouldn't be used anymore. It will be removed in a future version
+
+(pcmanfm:179328): Gtk-WARNING **: 18:12:59.180: Theme parsing error: <data>:3:30: The style property GtkWidget:focus-line-width is deprecated and shouldn't be used anymore. It will be removed in a future version
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.180: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.185: GFileInfo created without standard::edit-name
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.185: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.185: GFileInfo created without standard::size
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.185: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.186: GFileInfo created without standard::is-symlink
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.186: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.186: GFileInfo created without standard::is-hidden
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.186: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.187: GFileInfo created without standard::is-backup
+
+(pcmanfm:179328): GLib-GIO-CRITICAL **: 18:12:59.187: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:179328): Gtk-WARNING **: 18:13:17.264: gtk_menu_detach(): menu is not attached
+/usr/bin/google-chrome-stable 'file:///home/codespace/Desktop/xp-wallpaper.jpg' 
+[182206:182234:0309/181433.492874:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[182206:182234:0309/181433.785212:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[182206:182234:0309/181433.789456:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+/usr/bin/google-chrome-stable 'file:///home/codespace/Desktop/xp-wallpaper.jpg' 
+Opening in existing browser session.
+[182206:182234:0309/181437.354293:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[182206:182234:0309/181437.354385:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[182206:182206:0309/181437.577448:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: unknown error type: 
+[182345:7:0309/181437.579967:ERROR:gpu/ipc/client/command_buffer_proxy_impl.cc:287] ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer.
+[182350:7:0309/181437.587915:ERROR:gpu/ipc/client/command_buffer_proxy_impl.cc:287] ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer.
+[182327:7:0309/181437.591941:ERROR:gpu/ipc/client/command_buffer_proxy_impl.cc:287] ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer.
+[182327:7:0309/181437.597274:ERROR:gpu/ipc/client/command_buffer_proxy_impl.cc:287] ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer.
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[0309/181439.267071:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)
+[0309/181439.269822:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)
+[0309/181439.284137:ERROR:third_party/crashpad/crashpad/util/file/directory_reader_posix.cc:43] opendir /home/codespace/.config/google-chrome/Crash Reports/attachments/b2d90ccd-dea5-4737-b9ca-649e9ac64299: No such file or directory (2)
+[0309/181439.718991:ERROR:third_party/crashpad/crashpad/snapshot/elf/elf_dynamic_array_reader.h:64] tag not found
+[0309/181439.735471:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)
+[0309/181439.735518:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)
+/usr/bin/google-chrome-stable 'file:///home/codespace/Desktop/xp-wallpaper.jpg' 
+[182482:182506:0309/181442.953586:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[182482:182506:0309/181443.051155:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[182482:182506:0309/181443.051209:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[182482:182506:0309/181443.735516:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[182482:182506:0309/181443.735571:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[182482:182482:0309/181443.772950:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: unknown error type: 
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[182482:182507:0309/181446.435752:ERROR:google_apis/gcm/engine/registration_request.cc:290] Registration response error message: QUOTA_EXCEEDED
+Fontconfig error: Cannot load default config file: File not found

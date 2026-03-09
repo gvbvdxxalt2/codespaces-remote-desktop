@@ -2,6 +2,8 @@ var peerConfig = require("./peer-config.js");
 var peer = require("simple-peer");
 var desktopStream = null;
 
+var { handleInputTypes, handleInputClose } = require("./inputs.js");
+
 async function initStream() {
     desktopStream = await navigator.mediaDevices.getDisplayMedia({
       video: {
@@ -35,7 +37,20 @@ function getNewRDPeer() {
         stream: desktopStream
     });
 
+    peerConn.on("data", (data) => {
+      var text = data.toString();
+      try{
+        var json = JSON.parse(text);
+      }catch(e){
+        return;
+      }
 
+      handleInputTypes(json, peerConn);
+    });
+
+    peerConn.on("close", () => {
+      handleInputClose(peerConn);
+    });
 
     return peerConn;
 }
