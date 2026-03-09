@@ -11,6 +11,7 @@ var inputReplacers = {
     'Shift': 'shift',
     ' ': 'space',
     'Control': 'control',
+    'Alt': 'alt'
 };
 
 var remote = require("@electron/remote");

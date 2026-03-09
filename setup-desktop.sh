@@ -39,6 +39,10 @@ sudo apt-get install -y \
     dbus-x11 \
     dmz-cursor-theme \
     pcmanfm \
+    libcanberra-gtk-module \
+    libcanberra-gtk3-module \
+    libcanberra-common \
+    sound-theme-freedesktop \
     chromium \
     chromium-browser \
     gimp \

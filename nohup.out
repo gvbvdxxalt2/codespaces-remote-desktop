@@ -195,3 +195,36 @@ Created TensorFlow Lite XNNPACK delegate for CPU.
 Created TensorFlow Lite XNNPACK delegate for CPU.
 [182482:182507:0309/181446.435752:ERROR:google_apis/gcm/engine/registration_request.cc:290] Registration response error message: QUOTA_EXCEEDED
 Fontconfig error: Cannot load default config file: File not found
+[0309/182610.865376:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)
+[0309/182610.865463:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)
+[182482:182506:0309/183006.642773:FATAL:dbus/bus.cc:1245] D-Bus connection was disconnected. Aborting.
+[182524:182632:0309/183006.638043:ERROR:ui/gfx/x/connection.cc:67] X connection error received.
+[182524:182524:0309/183006.638270:ERROR:ui/gfx/x/connection.cc:67] X connection error received.
+[0309/183007.386649:ERROR:third_party/crashpad/crashpad/snapshot/elf/elf_dynamic_array_reader.h:64] tag not found
+[0309/183007.661126:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)
+[0309/183007.661161:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)
+** Message: 18:30:12.177: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:191904): WARNING **: 18:30:12.178: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:191904): GVFS-RemoteVolumeMonitor-WARNING **: 18:30:12.388: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:191904): GLib-GIO-CRITICAL **: 18:30:12.551: GFileInfo created without standard::edit-name
+
+(pcmanfm:191904): GLib-GIO-CRITICAL **: 18:30:12.551: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:191904): GLib-GIO-CRITICAL **: 18:30:12.552: GFileInfo created without standard::size
+
+(pcmanfm:191904): GLib-GIO-CRITICAL **: 18:30:12.552: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:191904): GLib-GIO-CRITICAL **: 18:30:12.552: GFileInfo created without standard::is-symlink
+
+(pcmanfm:191904): GLib-GIO-CRITICAL **: 18:30:12.552: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:191904): GLib-GIO-CRITICAL **: 18:30:12.552: GFileInfo created without standard::is-hidden
+
+(pcmanfm:191904): GLib-GIO-CRITICAL **: 18:30:12.552: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:191904): GLib-GIO-CRITICAL **: 18:30:12.552: GFileInfo created without standard::is-backup
+
+(pcmanfm:191904): GLib-GIO-CRITICAL **: 18:30:12.552: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached

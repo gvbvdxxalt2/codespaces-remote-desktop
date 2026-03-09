@@ -107,6 +107,14 @@ thunar --daemon > /dev/null 2>&1 &
 
 nohup dunst > /tmp/dunst.log 2>&1 &
 
+echo "🖌 Theme-ing your desktop."
+
+# Force the system to use the Freedesktop sound theme
+export GTK_THEME=Adwaita
+# Ensure the sound daemon knows which theme to use
+gsettings set org.gnome.desktop.sound theme-name 'freedesktop'
+gsettings set org.gnome.desktop.sound event-sounds true
+
 if [ -f "$WALLPAPER_PATH" ]; then
     feh --bg-scale "$WALLPAPER_PATH"
 fi
