@@ -1,0 +1,4 @@
+{
+    "name": "Codespaces Desktop Environment",
+    "postCreateCommand": "chmod +x * && bash setup-desktop.sh && bash start-desktop.sh && yarn run dev"
+}
