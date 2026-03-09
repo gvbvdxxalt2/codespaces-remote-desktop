@@ -253,3 +253,28 @@ Fontconfig error: Cannot load default config file: File not found
 (pcmanfm:2801): GLib-GIO-CRITICAL **: 18:34:47.176: GFileInfo created without standard::is-backup
 
 (pcmanfm:2801): GLib-GIO-CRITICAL **: 18:34:47.176: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+** Message: 18:40:30.466: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:6406): WARNING **: 18:40:30.466: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:6406): GVFS-RemoteVolumeMonitor-WARNING **: 18:40:30.558: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:40:30.642: GFileInfo created without standard::edit-name
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:40:30.642: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:40:30.643: GFileInfo created without standard::size
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:40:30.643: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:40:30.643: GFileInfo created without standard::is-symlink
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:40:30.644: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:40:30.644: GFileInfo created without standard::is-hidden
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:40:30.644: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:40:30.644: GFileInfo created without standard::is-backup
+
+(pcmanfm:6406): GLib-GIO-CRITICAL **: 18:40:30.644: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
