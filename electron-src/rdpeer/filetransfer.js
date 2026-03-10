@@ -3,7 +3,7 @@ var os = require("os");
 var path = require("path");
 var {exec} = require("child_process");
 
-var UPLOAD_FOLDER = "/home/codespace/Uploads";
+var UPLOAD_FOLDER = path.resolve(path.join(os.homedir(),"Downloads"));
 
 var downloadingFiles = {};
 
