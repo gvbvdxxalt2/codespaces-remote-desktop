@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# --- 0. PRE-FLIGHT: WAIT FOR APT LOCK ---
+echo "⏳ Checking for system package locks..."
+while fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1 || fuser /var/lib/apt/lists/lock >/dev/null 2>&1 ; do
+    echo "Wait: System is performing background updates. Retrying in 3 seconds..."
+    sleep 3
+done
+
 # --- 1. ROBUST CLEANUP ---
 echo "🧹 Cleaning up existing sessions..."
 pkill -9 Xvfb 2>/dev/null
@@ -7,7 +14,7 @@ pkill -9 fluxbox 2>/dev/null
 pkill -9 lxpanel 2>/dev/null
 pkill -9 pcmanfm 2>/dev/null
 fuser -k 99/tcp 2>/dev/null
-rm -rf /tmp/.X11-unix/X99 /tmp/.X99-lock
+rm -rf /tmp/.X11-unix/X99 /tmp/.X99-lock /tmp/lxpanel.pid
 
 # --- 2. ENVIRONMENT ---
 export DISPLAY=:99
@@ -35,38 +42,36 @@ until xdpyinfo -display $DISPLAY > /dev/null 2>&1; do
 done
 echo "✅ Xvfb is running."
 
-# --- 4. THEME & ICON REPAIR (Fixes the 'White Box' Taskbar) ---
+# --- 4. THEME & ICON REPAIR ---
 echo "🎨 Repairing Icon Caches..."
 mkdir -p "$HOME/.config/gtk-3.0"
 echo -e "[Settings]\ngtk-icon-theme-name=Adwaita" > "$HOME/.config/gtk-3.0/settings.ini"
 echo 'gtk-icon-theme-name = "Adwaita"' > "$HOME/.gtkrc-2.0"
-
-# Force refresh the system icon cache so LXPanel sees images
 sudo gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null
 sudo gtk-update-icon-cache -f /usr/share/icons/Adwaita 2>/dev/null
 
-# --- 5. CONFIGURATION (Overwrites) ---
+# --- 5. CONFIGURATION ---
 mkdir -p "$HOME/.config/lxpanel/LXDE/panels" "$HOME/.fluxbox" "$HOME/Desktop"
 
-# Fluxbox Config (Margins prevent windows from hiding behind taskbar)
 cat <<EOF > "$HOME/.fluxbox/init"
 session.screen0.margin: 30 0 45 0
 session.screen0.edgeSnapThreshold: 15
 EOF
 
-# LXPanel Config (Taskbar)
 cat <<EOF > "$HOME/.config/lxpanel/LXDE/panels/panel"
 Global {
     edge=bottom
-    allign=center
+    align=left
     margin=0
     widthtype=percent
     width=100
     height=45
     transparent=0
-    background=0
+    tintcolor=#2e3440
+    alpha=255
     iconsize=32
 }
+
 Plugin {
     type=menu
     Config {
@@ -74,6 +79,7 @@ Plugin {
         system=1
     }
 }
+
 Plugin {
     type=taskbar
     expand=1
@@ -84,9 +90,11 @@ Plugin {
         ShowAllDesks=0
     }
 }
+
 Plugin {
     type=tray
 }
+
 Plugin {
     type=clock
     Config {
@@ -98,24 +106,14 @@ Plugin {
 }
 EOF
 
-# --- 6. APP STORE & CHROME SHORTCUTS ---
-echo "🛒 Creating App Store and Chrome shortcuts..."
+# --- 6. APP STORE & OPTIMIZED CHROME SHORTCUTS ---
+echo "🛒 Creating shortcuts..."
 
-# App Store (Synaptic)
-cat <<EOF > "$HOME/Desktop/AppStore.desktop"
-[Desktop Entry]
-Name=App Store
-Exec=sudo synaptic
-Icon=package-x-generic
-Type=Application
-Terminal=false
-EOF
-
-# Chrome Fix (Bypasses Keyring password prompt)
 cat <<EOF > "$HOME/Desktop/google-chrome.desktop"
 [Desktop Entry]
 Name=Google Chrome
-Exec=google-chrome-stable --password-store=basic --no-sandbox
+# Optimized for container/Xvfb environment
+Exec=google-chrome-stable --password-store=basic --no-sandbox --disable-dev-shm-usage --disable-gpu --no-first-run
 Icon=google-chrome
 Type=Application
 Terminal=false
@@ -126,27 +124,37 @@ chmod +x "$HOME/Desktop/"*.desktop
 # --- 7. LAUNCH UI ---
 export $(dbus-launch)
 pulseaudio --start > /dev/null 2>&1 &
-
-# Set cursor and root background
 xsetroot -display $DISPLAY -cursor_name left_ptr -solid "#2e3440"
 
 echo "🪟 Launching Window Manager..."
 nohup fluxbox > /dev/null 2>&1 &
-sleep 1
-nohup lxpanel --profile LXDE > /tmp/lxpanel.log 2>&1 &
+# Give Fluxbox a solid moment to initialize its geometry
+sleep 2 
 
-# Wait for panel to appear, then set "sticky"
-sleep 2
-if command -v wmctrl &> /dev/null; then
+echo "🛠️ Starting LXPanel..."
+# Retry loop to ensure the panel actually stays alive
+for i in {1..3}; do
+    nohup lxpanel --profile LXDE > /tmp/lxpanel.log 2>&1 &
+    sleep 2
+    if pgrep -x "lxpanel" > /dev/null; then
+        echo "✅ LXPanel started successfully."
+        break
+    else
+        echo "⚠️ LXPanel failed to start, retrying ($i/3)..."
+        # clear any dead pid locks before retrying
+        rm -f /tmp/lxpanel.pid 
+    fi
+done
+
+# Ensure the panel stays on top if it survived the startup
+if pgrep -x "lxpanel" > /dev/null && command -v wmctrl &> /dev/null; then
     wmctrl -r "lxpanel" -b add,sticky,above
 fi
 
-# Set Wallpaper if feh is installed
 if command -v feh > /dev/null && [ -f "$WALLPAPER_PATH" ]; then
     feh --bg-scale "$WALLPAPER_PATH"
 fi
 
-# Launch File Manager
 nohup pcmanfm --desktop > /dev/null 2>&1 &
 
 echo "🚀 Desktop Environment ready."
