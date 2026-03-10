@@ -15,6 +15,7 @@ function initiateConnection() {
     var ws = new WebSocket(url);
     var canSend = false;
     var peerConn = null;
+    var didInitiate = false;
 
     ws.onmessage = function (event) {
         if (!canSend) {
@@ -43,9 +44,10 @@ function initiateConnection() {
         peerConn.on("connect", () => {
             loadingScreen.hidden = true;
             appScreen.hidden = false;
+            didInitiate = true;
         });
 
-        peerConn.on("close", () => {
+        peerConn.on("disconnect", () => {
             appScreen.hidden = true;
             setTimeout(() => {
                 initiateConnection();
@@ -54,6 +56,11 @@ function initiateConnection() {
     };
     ws.onclose = function () {
         canSend = false;
+        if (!didInitiate) {
+            setTimeout(() => {
+                initiateConnection();
+            },500);
+        }
     };
 }
 

@@ -58,6 +58,17 @@ session.screen0.margin: 30 0 45 0
 session.screen0.edgeSnapThreshold: 15
 EOF
 
+mkdir -p "$HOME/.local/share/applications"
+
+cat <<EOF > "$HOME/.local/share/applications/file-manager.desktop"
+[Desktop Entry]
+Name=File Manager
+Exec=pcmanfm $HOME
+Icon=user-home
+Type=Application
+Terminal=false
+EOF
+
 cat <<EOF > "$HOME/.config/lxpanel/LXDE/panels/panel"
 Global {
     edge=bottom
@@ -81,6 +92,18 @@ Plugin {
 }
 
 Plugin {
+    type=launchbar
+    Config {
+        Button {
+            id=file-manager.desktop
+        }
+        Button {
+            id=google-chrome.desktop
+        }
+    }
+}
+
+Plugin {
     type=taskbar
     expand=1
     Config {
@@ -92,10 +115,6 @@ Plugin {
 }
 
 Plugin {
-    type=tray
-}
-
-Plugin {
     type=clock
     Config {
         ClockFmt=%R
@@ -103,6 +122,10 @@ Plugin {
         BoldFont=0
         IconOnly=0
     }
+}
+
+Plugin {
+    type=tray
 }
 EOF
 

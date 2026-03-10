@@ -27,8 +27,8 @@ video.addEventListener("loadedmetadata", (event) => {
   var width = event.target.videoWidth;
   var height = event.target.videoHeight;
 
-  appCanvas.width = width*4;
-  appCanvas.height = height*4;
+  appCanvas.width = width*2;
+  appCanvas.height = height*2;
 });
 
 function updateInterval(peerConn) {
@@ -65,7 +65,7 @@ function startUpdateLoop(peerConn) {
     clearInterval(interval);
     interval = setInterval(() => {
         updateInterval(peerConn);
-    }, 1000/35);
+    }, 1000/32);
 
     previousMousePos = [null,null];
 }
@@ -233,6 +233,24 @@ document.addEventListener("wheel", (event) => {
         console.error("Failed to send wheel event:", e);
     }
 }, { passive: false });
+
+document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" && video.srcObject) {
+        
+        // Re-assigning the stream forces the browser to flush its internal 
+        // playback buffer and grab the absolute newest frame.
+        let tempStream = video.srcObject;
+        video.srcObject = null;
+        try{video.play();}catch(e){}
+        setTimeout(() => {
+            video.srcObject = tempStream;
+            video.play().catch(e => console.error("Playback failed on focus:", e)).then(() => {
+                video.currentTime = video.duration;
+                video.play().catch(e => {});
+            });
+        },100);
+    }
+});
 
 appScreen.append(appCanvas);
 

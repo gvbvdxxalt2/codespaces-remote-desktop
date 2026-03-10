@@ -1,4 +1,5 @@
 var configstuff = {
+  sdpSemantics: 'unified-plan',
   iceServers: [
     { urls: "stun:stun.l.google.com:19302" },
     { urls: "stun:vpn.mikedev101.cc:3478" },

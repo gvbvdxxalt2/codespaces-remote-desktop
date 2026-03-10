@@ -45,6 +45,7 @@ async function openRDWindow() {
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
+            backgroundThrottling: false
         },
         preload: path.join(__dirname, 'preload.js')
     });
