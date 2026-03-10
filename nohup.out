@@ -1019,3 +1019,5 @@ vim '/home/codespace/Downloads/Backup-codes-gvbvdxx.txt'
 (pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:16.451: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
 
 (pcmanfm:28865): Gtk-WARNING **: 12:09:49.240: gtk_menu_detach(): menu is not attached
+
+(pcmanfm:28865): Gtk-WARNING **: 12:12:20.167: gtk_menu_detach(): menu is not attached
