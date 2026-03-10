@@ -1,8 +1,9 @@
 var fs = require("fs");
 var os = require("os");
 var path = require("path");
+var {exec} = require("child_process");
 
-var UPLOAD_FOLDER = path.join(os.homedir(), "Uploads");
+var UPLOAD_FOLDER = "/home/codespace/Uploads";
 
 var downloadingFiles = {};
 
@@ -15,9 +16,14 @@ function handleUploadChunk(json,peerConn) {
 
         initUploadDir();
 
+        var filePath = json.p;
+
         try{
-            var filePath = path.join(UPLOAD_FOLDER,json.p);
+            if (!json.outside) {
+                filePath = json.outside;
+            }
         }catch(e){
+            console.log(`[FT]: Unable to generate path for ${json.p}. Error: ${e}`);
             return;
         }
 
@@ -99,6 +105,7 @@ function initUploadDir() {
     if (!fs.existsSync(UPLOAD_FOLDER)) {
         fs.mkdirSync(UPLOAD_FOLDER);
     }
+    UPLOAD_FOLDER = path.resolve(UPLOAD_FOLDER);
 }
 
 module.exports = {

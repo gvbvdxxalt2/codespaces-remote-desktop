@@ -9,7 +9,7 @@ function JSONableToUint8(jsonable) {
     return Uint8Array.from(jsonable);
 }
 
-function sendDownloadRequest(peerConn,filePath,ProgressMonitor) {
+function sendDownloadRequest(peerConn,filePath,sendOutside,ProgressMonitor) {
     var onProgress = ProgressMonitor || ((cur,max) => {});
     var id = "r"+Date.now()+"-"+Math.round(Math.random()*999999);
     var finished = () => {};
@@ -50,6 +50,7 @@ function sendDownloadRequest(peerConn,filePath,ProgressMonitor) {
         peerConn.send(JSON.stringify({
             type: "filereadreq",
             p: filePath,
+            outside: sendOutside ? true : undefined,
             id
         }));
     }catch(e){
@@ -75,13 +76,14 @@ var uploadQueue = {};
 var UPLOAD_SPEED = 15;
 var CHUNK_SIZE = 6000;
 
-function uploadFile(peerConn,targetPath,uint8array,onProgress = (cur,max) => {}) {
+function uploadFile(peerConn,targetPath,uint8array,sendOutside,onProgress = (cur,max) => {}) {
     return new Promise((resolve,reject) => {
         var id = "r"+Date.now()+"-"+Math.round(Math.random()*999999);
         uploadQueue[id] = {
             peerConn,
             targetPath,
             uint8array,
+            sendOutside,
             progressCallback: onProgress || (() => {}),
             curByte: 0,
             resolve,
@@ -95,7 +97,17 @@ function uploadFile(peerConn,targetPath,uint8array,onProgress = (cur,max) => {})
 }
 
 function handleUploadFile(id) {
-    var {peerConn,targetPath,uint8array,resolve,reject,destroy,progressCallback,curByte} = uploadQueue[id];
+    var {
+        peerConn,
+        targetPath,
+        uint8array,
+        resolve,
+        reject,
+        destroy,
+        progressCallback,
+        curByte,
+        sendOutside
+    } = uploadQueue[id];
 
     if (!peerConn) {
         reject("Peer connection is empty");
@@ -137,6 +149,7 @@ function handleUploadFile(id) {
             p: targetPath,
             c: uint8ToJSONable(chunkUint),
             end: finished,
+            outside: sendOutside ? true : undefined,
             id
         }));
         progressCallback(curByte,length);
