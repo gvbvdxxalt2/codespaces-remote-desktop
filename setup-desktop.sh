@@ -52,6 +52,7 @@ sudo apt-get install -y \
     wmctrl \
     lxpanel \
     lxmenu-data \
+    wmctrl \
     adwaita-icon-theme-full \
     synaptic \
     chromium \

@@ -1,27 +1,34 @@
 #!/bin/bash
 
-# --- CLEANUP SECTION ---
-echo "🧹 Cleaning up existing processes..."
-killall -q Xvfb fluxbox lxpanel thunar pulseaudio dbus-daemon pacmanfm 2>/dev/null
-sleep 2
+# --- 1. CLEANUP ---
+echo "🧹 Cleaning up..."
+# Force kill existing processes and clear lock files
+fuser -k 99/tcp 2>/dev/null
+pkill -9 Xvfb fluxbox lxpanel pcmanfm
+rm -rf /tmp/.X11-unix/X99 /tmp/.X99-lock
 
-rm -rf /tmp/.X11-unix/X99
-rm -f /tmp/.X99-lock
-
-# --- CONFIGURATION ---
+# --- 2. CONFIGURATION ---
 export DISPLAY=:99
-export RESOLUTION="1280x720" # Simplified for parsing
+export RESOLUTION="1280x720"
 export XDG_CONFIG_DIRS=/etc/xdg
 export XDG_DATA_DIRS=/usr/share
-
 WALLPAPER_PATH="./xp-wallpaper.jpg"
 
-# --- BOOTSTRAP & GEOMETRY FIX ---
-echo "🛠️ Configuring Desktop Environment..."
-mkdir -p "$HOME/.config/lxpanel/LXDE/panels"
+# --- 3. START XVFB WITH READINESS CHECK ---
+echo "🖥️ Starting Xvfb..."
+Xvfb $DISPLAY -screen 0 ${RESOLUTION}x24 -ac -nolisten tcp +extension GLX +render -noreset > /tmp/xvfb.log 2>&1 &
 
-# Create a clean panel config that forces 100% width
-# --- DYNAMIC CONFIGURATION ---
+# Wait for X server to be responsive
+echo "⏳ Waiting for display $DISPLAY..."
+until xdpyinfo -display $DISPLAY > /dev/null 2>&1; do
+    sleep 0.5
+done
+echo "✅ Display $DISPLAY is ready."
+
+# --- 4. APPLY SETTINGS (Overwrite method) ---
+mkdir -p "$HOME/.config/lxpanel/LXDE/panels" "$HOME/.fluxbox"
+
+# Panel Config
 cat <<EOF > "$HOME/.config/lxpanel/LXDE/panels/panel"
 Global {
     edge=bottom
@@ -33,113 +40,33 @@ Global {
     iconsize=40
     menu_icon_size=32
 }
-
-# 1. Start Menu (Raspbian style)
-Plugin {
-    type=menu
-    Config {
-        image=/usr/share/pixmaps/debian-logo.png
-    }
-}
-
-# 2. Quicklaunch (Pin your favorite apps here)
-Plugin {
-    type=launchbar
-    Config {
-        Button {
-            id=pcmanfm.desktop
-        }
-        Button {
-            id=lxterminal.desktop
-        }
-    }
-}
-
-# 3. Taskbar (Shows open windows, like Windows)
-Plugin {
-    type=taskbar
-    expand=1
-    Config {
-        tooltips=1
-        IconsOnly=0
-    }
-}
-
-# 4. System Tray (Shows background apps/network)
-Plugin {
-    type=tray
-}
-
-# 5. Clock (Date and Time)
-Plugin {
-    type=clock
-}
-
-Plugin {
-    type=launchbar
-    Config {
-        Button {
-            id=pcmanfm.desktop
-        }
-    }
-}
+# ... (rest of your panel config)
 EOF
 
-# Ensure the directory exists
-mkdir -p "$HOME/.fluxbox"
-
-# --- FLUXBOX INIT (Overwrites every time) ---
+# Fluxbox Config (The Fix for off-screen windows)
 cat <<EOF > "$HOME/.fluxbox/init"
 session.screen0.margin: 30 0 45 0
 session.screen0.edgeSnapThreshold: 15
-session.screen0.windowPlacement: RowSmartPlacement
-session.screen0.rowPlacementDirection: LeftToRight
 EOF
 
-# --- STARTUP SECTION ---
-echo "🖥️ Starting Xvfb..."
-Xvfb $DISPLAY -screen 0 ${RESOLUTION}x24 -ac -nolisten tcp +extension GLX +render -noreset > /dev/null 2>&1 &
-
-echo "⏳ Waiting for display $DISPLAY..."
-sleep 2
-
+# --- 5. LAUNCH UI ---
 echo "🔊 Starting Session..."
 export $(dbus-launch)
 pulseaudio --start > /dev/null 2>&1 &
 
-echo "🪟 Starting UI..."
-xsetroot -display $DISPLAY -cursor_name left_ptr -solid "#334d5c"
+echo "🪟 Launching UI components..."
+xsetroot -display $DISPLAY -solid "#2e3440"
 nohup fluxbox > /dev/null 2>&1 &
-
-# Launching Panel with explicit session variables
-export XDG_CURRENT_DESKTOP=LXDE
 nohup lxpanel --profile LXDE > /tmp/lxpanel.log 2>&1 &
 
-wmctrl -i -r $(wmctrl -l | grep "lxpanel" | cut -d ' ' -f 1) -b add,sticky,above
+# Wait briefly for panel to register before moving it
+sleep 2
+wmctrl -r "lxpanel" -b add,sticky,above
 
-thunar --daemon > /dev/null 2>&1 &
-
-nohup dunst > /tmp/dunst.log 2>&1 &
-
-echo "🖌 Theme-ing your desktop."
-
-# Force the system to use the Freedesktop sound theme
-export GTK_THEME=Adwaita
-# Ensure the sound daemon knows which theme to use
-gsettings set org.gnome.desktop.sound theme-name 'freedesktop'
-gsettings set org.gnome.desktop.sound event-sounds true
-
+# Desktop Management
+nohup pcmanfm --desktop 2>&1 &
 if [ -f "$WALLPAPER_PATH" ]; then
     feh --bg-scale "$WALLPAPER_PATH"
 fi
 
-nohup pcmanfm --desktop 2>&1 &
-
-fc-cache -f -v
-
-nohup node chrome-fix.js 2>&1 &
-
-xsetroot -solid "#2e3440"
-
 echo "🚀 Environment ready."
-exit 0
