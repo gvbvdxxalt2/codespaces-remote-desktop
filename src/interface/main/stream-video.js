@@ -173,7 +173,7 @@ document.addEventListener("keydown",(event) => {
     if (currentPeer) {
 
         if (event.key.toLowerCase() == "u" && event.ctrlKey && event.shiftKey) {
-            window.alert("Special key pressed!");
+            sendUploadTest(currentPeer);
             return;
         }
 
@@ -259,5 +259,36 @@ document.addEventListener("visibilitychange", () => {
 });
 
 appScreen.append(appCanvas);
+
+var {uploadFile} = require("./filesend.js");
+
+function sendUploadTest(peerConn) {
+    var input = document.createElement("input");
+    input.type = "file";
+
+    input.onchange = function () {
+        var files = input.files;
+        if (files && files[0]) {
+            var file = files[0];
+
+            var reader = new FileReader();
+            reader.onload = async function () {
+                var uint8array = new Uint8Array(reader.result);
+
+                await uploadFile(
+                    peerConn,
+                    file.name || "upload.file",
+                    uint8array
+                );
+                window.alert("File was uploaded!");
+            };
+            reader.readAsArrayBuffer(file);
+
+        }
+        input.value = "";
+    };
+
+    input.click();
+}
 
 module.exports = {handlePeerConnection};

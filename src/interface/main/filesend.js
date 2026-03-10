@@ -73,7 +73,7 @@ function sendDownloadRequest(peerConn,filePath,ProgressMonitor) {
 
 var uploadQueue = {};
 var UPLOAD_SPEED = 15;
-var CHUNK_SIZE = 4000;
+var CHUNK_SIZE = 6000;
 
 function uploadFile(peerConn,targetPath,uint8array,onProgress = (cur,max) => {}) {
     return new Promise((resolve,reject) => {
@@ -95,8 +95,7 @@ function uploadFile(peerConn,targetPath,uint8array,onProgress = (cur,max) => {})
 }
 
 function handleUploadFile(id) {
-    var {peerConn,targetPath,uint8array,resolve,reject,destroy,progressCallback} = uploadQueue[id];
-    var curByte = uploadQueue[id];
+    var {peerConn,targetPath,uint8array,resolve,reject,destroy,progressCallback,curByte} = uploadQueue[id];
 
     if (!peerConn) {
         reject("Peer connection is empty");
@@ -120,10 +119,10 @@ function handleUploadFile(id) {
         chunk.push(uint8array[curByte]);
         curByte += 1;
         size += 1;
-        if (size > CHUNK_SIZE) {
+        if (size >= CHUNK_SIZE) {
             chunkFinished = true;
         }
-        if (size > length) {
+        if (curByte >= length) {
             chunkFinished = true;
             finished = true;
             resolve();
@@ -136,7 +135,9 @@ function handleUploadFile(id) {
         peerConn.send(JSON.stringify({
             type: "upload",
             p: targetPath,
-            c: uint8ToJSONable(chunkUint)
+            c: uint8ToJSONable(chunkUint),
+            end: finished,
+            id
         }));
         progressCallback(curByte,length);
     }catch(e){

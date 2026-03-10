@@ -3,6 +3,7 @@ var peer = require("simple-peer");
 var desktopStream = null;
 
 var { handleInputTypes, handleInputClose } = require("./inputs.js");
+var { handleFileTransferMessages, handleFTClose } = require("./filetransfer.js");
 
 async function initStream() {
     desktopStream = await navigator.mediaDevices.getDisplayMedia({
@@ -46,6 +47,7 @@ function getNewRDPeer() {
       }
 
       handleInputTypes(json, peerConn);
+      handleFileTransferMessages(json, peerConn);
     });
 
     peerConn.on("close", () => {
