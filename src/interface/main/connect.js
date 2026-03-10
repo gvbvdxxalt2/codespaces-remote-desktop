@@ -15,12 +15,33 @@ function initiateConnection() {
     var ws = new WebSocket(url);
     var canSend = false;
     var peerConn = null;
-    var didInitiate = false;
+    var isReconnecting = false; 
+    
+    var intentionalWsClose = false; 
+
+    function triggerReconnect() {
+        if (isReconnecting) return;
+        isReconnecting = true;
+        canSend = false;
+
+        if (peerConn) {
+            try { peerConn.destroy(); } catch(e) {}
+        }
+        
+        if (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING) {
+            intentionalWsClose = true;
+            try { ws.close(); } catch(e) {}
+        }
+
+        appScreen.hidden = true;
+        
+        setTimeout(() => {
+            initiateConnection();
+        }, 1000);
+    }
 
     ws.onmessage = function (event) {
-        if (!canSend) {
-            return;
-        }
+        if (!canSend) return;
         
         var data = event.data;
         var json = JSON.parse(data);
@@ -29,38 +50,48 @@ function initiateConnection() {
             peerConn.signal(json.signal);
         }
     };
+
     ws.onopen = function () {
         canSend = true;
 
         peerConn = getNewPeer();
+        
         peerConn.on("signal", (data) => {
-            if (!canSend) {
-                return;
-            }
+            if (!canSend) return;
             ws.send(JSON.stringify({
                 signal: data
             }));
         });
+        
         peerConn.on("connect", () => {
             loadingScreen.hidden = true;
             appScreen.hidden = false;
-            didInitiate = true;
+
+            intentionalWsClose = true;
+            canSend = false;
+            ws.close(); 
         });
 
-        peerConn.on("disconnect", () => {
-            appScreen.hidden = true;
-            setTimeout(() => {
-                initiateConnection();
-            },500);
-        });
-    };
-    ws.onclose = function () {
-        canSend = false;
-        if (!didInitiate) {
-            setTimeout(() => {
-                initiateConnection();
-            },500);
+        peerConn.on("close", triggerReconnect);
+        peerConn.on("error", triggerReconnect);
+
+        if (peerConn._pc) {
+            peerConn._pc.addEventListener("iceconnectionstatechange", () => {
+                var state = peerConn._pc.iceConnectionState;
+
+                if (state === "disconnected" || state === "failed" || state === "closed") {
+                    triggerReconnect();
+                }
+            });
         }
+    };
+
+    ws.onclose = function() {
+        if (!intentionalWsClose) triggerReconnect();
+    };
+    
+    ws.onerror = function() {
+        if (!intentionalWsClose) triggerReconnect();
     };
 }
 

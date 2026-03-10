@@ -3,7 +3,7 @@ var os = require("os");
 var path = require("path");
 var {exec} = require("child_process");
 
-var UPLOAD_FOLDER = path.resolve(path.join(os.homedir(),"Downloads"));
+var UPLOAD_FOLDER = "Uploads/";
 
 var downloadingFiles = {};
 
@@ -84,7 +84,7 @@ function handleUploadChunk(json,peerConn) {
     transfer.timeout = setTimeout(() => {
         transfer.timeout = null;
         transfer.close();
-    },1000);
+    },2000);
 
     if (json.end) {
         transfer.close();

@@ -9,11 +9,6 @@ try {
 
 module.exports = {
   mode: "production",
-  cache: {
-    type: "filesystem",
-    allowCollectingMemory: true,
-  },
-  devtool: false,
   entry: {
     main: "./src/index.js",
   },
@@ -32,9 +27,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "public"),
     filename: "[name].bundle.js",
-  },
-  watchOptions: {
-    ignored: [path.resolve(__dirname, "wpstatic/version.json")], //Ignore version file.
   },
   performance: {
     hints: "warning",
