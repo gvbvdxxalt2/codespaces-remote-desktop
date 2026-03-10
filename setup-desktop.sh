@@ -40,10 +40,15 @@ sudo apt-get install -y \
     dbus-x11 \
     dmz-cursor-theme \
     pcmanfm \
+    adwaita-icon-theme-full \
+    lxpanel-data \
+    lxmenu-data \
+    hicolor-icon-theme \
     libcanberra-gtk-module \
     libcanberra-gtk3-module \
     libcanberra-common \
     sound-theme-freedesktop \
+    synaptic \
     chromium \
     chromium-browser \
     gimp \

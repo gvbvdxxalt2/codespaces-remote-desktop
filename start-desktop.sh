@@ -31,6 +31,7 @@ Global {
     width=100
     height=45
     iconsize=40
+    menu_icon_size=32
 }
 
 # 1. Start Menu (Raspbian style)
@@ -84,6 +85,17 @@ Plugin {
 }
 EOF
 
+# Ensure the directory exists
+mkdir -p "$HOME/.fluxbox"
+
+# --- FLUXBOX INIT (Overwrites every time) ---
+cat <<EOF > "$HOME/.fluxbox/init"
+session.screen0.margin: 30 0 45 0
+session.screen0.edgeSnapThreshold: 15
+session.screen0.windowPlacement: RowSmartPlacement
+session.screen0.rowPlacementDirection: LeftToRight
+EOF
+
 # --- STARTUP SECTION ---
 echo "🖥️ Starting Xvfb..."
 Xvfb $DISPLAY -screen 0 ${RESOLUTION}x24 -ac -nolisten tcp +extension GLX +render -noreset > /dev/null 2>&1 &
@@ -126,6 +138,8 @@ nohup pcmanfm --desktop 2>&1 &
 fc-cache -f -v
 
 nohup node chrome-fix.js 2>&1 &
+
+xsetroot -solid "#2e3440"
 
 echo "🚀 Environment ready."
 exit 0
