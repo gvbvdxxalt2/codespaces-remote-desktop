@@ -327,3 +327,695 @@ Fontconfig error: Cannot load default config file: File not found
 env GDK_BACKEND=x11 audacity '/workspaces/codespaces-remote-desktop/WindowsSound.wav' 
 /usr/bin/google-chrome-stable 'file:///home/codespace/Desktop/xp-wallpaper.jpg' 
 Opening in existing browser session.
+** Message: 11:31:00.058: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:2559): WARNING **: 11:31:00.061: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:2559): GVFS-RemoteVolumeMonitor-WARNING **: 11:31:00.207: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:2559): GLib-GIO-CRITICAL **: 11:31:00.346: GFileInfo created without standard::edit-name
+
+(pcmanfm:2559): GLib-GIO-CRITICAL **: 11:31:00.346: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:2559): GLib-GIO-CRITICAL **: 11:31:00.346: GFileInfo created without standard::size
+
+(pcmanfm:2559): GLib-GIO-CRITICAL **: 11:31:00.346: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:2559): GLib-GIO-CRITICAL **: 11:31:00.346: GFileInfo created without standard::is-symlink
+
+(pcmanfm:2559): GLib-GIO-CRITICAL **: 11:31:00.346: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:2559): GLib-GIO-CRITICAL **: 11:31:00.346: GFileInfo created without standard::is-hidden
+
+(pcmanfm:2559): GLib-GIO-CRITICAL **: 11:31:00.346: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:2559): GLib-GIO-CRITICAL **: 11:31:00.347: GFileInfo created without standard::is-backup
+
+(pcmanfm:2559): GLib-GIO-CRITICAL **: 11:31:00.347: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+** Message: 11:32:56.473: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:4946): WARNING **: 11:32:56.476: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:4946): GVFS-RemoteVolumeMonitor-WARNING **: 11:32:56.566: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:4946): GLib-GIO-CRITICAL **: 11:32:56.666: GFileInfo created without standard::edit-name
+
+(pcmanfm:4946): GLib-GIO-CRITICAL **: 11:32:56.666: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:4946): GLib-GIO-CRITICAL **: 11:32:56.667: GFileInfo created without standard::size
+
+(pcmanfm:4946): GLib-GIO-CRITICAL **: 11:32:56.667: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:4946): GLib-GIO-CRITICAL **: 11:32:56.667: GFileInfo created without standard::is-symlink
+
+(pcmanfm:4946): GLib-GIO-CRITICAL **: 11:32:56.667: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:4946): GLib-GIO-CRITICAL **: 11:32:56.667: GFileInfo created without standard::is-hidden
+
+(pcmanfm:4946): GLib-GIO-CRITICAL **: 11:32:56.667: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:4946): GLib-GIO-CRITICAL **: 11:32:56.667: GFileInfo created without standard::is-backup
+
+(pcmanfm:4946): GLib-GIO-CRITICAL **: 11:32:56.667: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+vim '/home/codespace/Downloads/Backup-codes-gvbvdxx.txt' 
+
+(xfce4-terminal:11499): xfce4-terminal-WARNING **: 11:41:56.475: Failed to connect to session manager: Failed to connect to the session manager: SESSION_MANAGER environment variable not defined
+** Message: 11:52:39.886: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:17018): WARNING **: 11:52:39.889: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:17018): GVFS-RemoteVolumeMonitor-WARNING **: 11:52:40.006: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:17018): GLib-GIO-CRITICAL **: 11:52:40.100: GFileInfo created without standard::edit-name
+
+(pcmanfm:17018): GLib-GIO-CRITICAL **: 11:52:40.100: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:17018): GLib-GIO-CRITICAL **: 11:52:40.100: GFileInfo created without standard::size
+
+(pcmanfm:17018): GLib-GIO-CRITICAL **: 11:52:40.100: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:17018): GLib-GIO-CRITICAL **: 11:52:40.101: GFileInfo created without standard::is-symlink
+
+(pcmanfm:17018): GLib-GIO-CRITICAL **: 11:52:40.101: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:17018): GLib-GIO-CRITICAL **: 11:52:40.101: GFileInfo created without standard::is-hidden
+
+(pcmanfm:17018): GLib-GIO-CRITICAL **: 11:52:40.101: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:17018): GLib-GIO-CRITICAL **: 11:52:40.101: GFileInfo created without standard::is-backup
+
+(pcmanfm:17018): GLib-GIO-CRITICAL **: 11:52:40.102: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+** Message: 11:52:54.877: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:17406): WARNING **: 11:52:54.877: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:17406): GVFS-RemoteVolumeMonitor-WARNING **: 11:52:54.962: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:17406): GLib-GIO-CRITICAL **: 11:52:55.062: GFileInfo created without standard::edit-name
+
+(pcmanfm:17406): GLib-GIO-CRITICAL **: 11:52:55.062: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:17406): GLib-GIO-CRITICAL **: 11:52:55.062: GFileInfo created without standard::size
+
+(pcmanfm:17406): GLib-GIO-CRITICAL **: 11:52:55.062: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:17406): GLib-GIO-CRITICAL **: 11:52:55.062: GFileInfo created without standard::is-symlink
+
+(pcmanfm:17406): GLib-GIO-CRITICAL **: 11:52:55.062: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:17406): GLib-GIO-CRITICAL **: 11:52:55.062: GFileInfo created without standard::is-hidden
+
+(pcmanfm:17406): GLib-GIO-CRITICAL **: 11:52:55.062: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:17406): GLib-GIO-CRITICAL **: 11:52:55.062: GFileInfo created without standard::is-backup
+
+(pcmanfm:17406): GLib-GIO-CRITICAL **: 11:52:55.062: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+** Message: 11:53:11.965: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:17771): WARNING **: 11:53:11.965: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:17771): GVFS-RemoteVolumeMonitor-WARNING **: 11:53:12.081: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:17771): GLib-GIO-CRITICAL **: 11:53:12.209: GFileInfo created without standard::edit-name
+
+(pcmanfm:17771): GLib-GIO-CRITICAL **: 11:53:12.209: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:17771): GLib-GIO-CRITICAL **: 11:53:12.209: GFileInfo created without standard::size
+
+(pcmanfm:17771): GLib-GIO-CRITICAL **: 11:53:12.209: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:17771): GLib-GIO-CRITICAL **: 11:53:12.209: GFileInfo created without standard::is-symlink
+
+(pcmanfm:17771): GLib-GIO-CRITICAL **: 11:53:12.209: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:17771): GLib-GIO-CRITICAL **: 11:53:12.209: GFileInfo created without standard::is-hidden
+
+(pcmanfm:17771): GLib-GIO-CRITICAL **: 11:53:12.209: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:17771): GLib-GIO-CRITICAL **: 11:53:12.209: GFileInfo created without standard::is-backup
+
+(pcmanfm:17771): GLib-GIO-CRITICAL **: 11:53:12.209: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+** Message: 11:54:37.670: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:19196): WARNING **: 11:54:37.670: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:19196): GVFS-RemoteVolumeMonitor-WARNING **: 11:54:37.791: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:19196): GLib-GIO-CRITICAL **: 11:54:37.925: GFileInfo created without standard::edit-name
+
+(pcmanfm:19196): GLib-GIO-CRITICAL **: 11:54:37.925: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:19196): GLib-GIO-CRITICAL **: 11:54:37.925: GFileInfo created without standard::size
+
+(pcmanfm:19196): GLib-GIO-CRITICAL **: 11:54:37.926: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:19196): GLib-GIO-CRITICAL **: 11:54:37.926: GFileInfo created without standard::is-symlink
+
+(pcmanfm:19196): GLib-GIO-CRITICAL **: 11:54:37.926: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:19196): GLib-GIO-CRITICAL **: 11:54:37.926: GFileInfo created without standard::is-hidden
+
+(pcmanfm:19196): GLib-GIO-CRITICAL **: 11:54:37.926: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:19196): GLib-GIO-CRITICAL **: 11:54:37.927: GFileInfo created without standard::is-backup
+
+(pcmanfm:19196): GLib-GIO-CRITICAL **: 11:54:37.927: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+** Message: 11:56:04.594: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:20567): WARNING **: 11:56:04.597: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:20567): GVFS-RemoteVolumeMonitor-WARNING **: 11:56:04.694: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 11:56:04.785: GFileInfo created without standard::edit-name
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 11:56:04.785: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 11:56:04.785: GFileInfo created without standard::size
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 11:56:04.785: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 11:56:04.786: GFileInfo created without standard::is-symlink
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 11:56:04.786: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 11:56:04.786: GFileInfo created without standard::is-hidden
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 11:56:04.786: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 11:56:04.786: GFileInfo created without standard::is-backup
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 11:56:04.787: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.718: GFileInfo created without standard::edit-name
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.718: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.718: GFileInfo created without standard::size
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.718: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.718: GFileInfo created without standard::content-type
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.718: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.718: GFileInfo created without standard::is-symlink
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.718: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.718: GFileInfo created without standard::is-backup
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.718: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:20567): Gtk-WARNING **: 12:04:55.720: Theme parsing error: <data>:2:27: The style property GtkWidget:focus-padding is deprecated and shouldn't be used anymore. It will be removed in a future version
+
+(pcmanfm:20567): Gtk-WARNING **: 12:04:55.721: Theme parsing error: <data>:3:30: The style property GtkWidget:focus-line-width is deprecated and shouldn't be used anymore. It will be removed in a future version
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.724: GFileInfo created without standard::edit-name
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.724: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.724: GFileInfo created without standard::size
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.724: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.724: GFileInfo created without standard::is-symlink
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.724: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.724: GFileInfo created without standard::is-hidden
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.724: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.725: GFileInfo created without standard::is-backup
+
+(pcmanfm:20567): GLib-GIO-CRITICAL **: 12:04:55.725: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+vim '/home/codespace/Downloads/Backup-codes-gvbvdxx.txt' 
+
+(xfce4-terminal:26909): xfce4-terminal-WARNING **: 12:05:02.455: Failed to connect to session manager: Failed to connect to the session manager: SESSION_MANAGER environment variable not defined
+** Message: 12:07:35.990: x-terminal-emulator has very limited support, consider choosing another terminal
+
+** (pcmanfm:28865): WARNING **: 12:07:35.991: The directory '~/Templates' doesn't exist, ignoring it
+
+(pcmanfm:28865): GVFS-RemoteVolumeMonitor-WARNING **: 12:07:36.129: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:07:36.259: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:07:36.259: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:07:36.259: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:07:36.259: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:07:36.259: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:07:36.259: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:07:36.259: GFileInfo created without standard::is-hidden
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:07:36.259: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:07:36.259: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:07:36.259: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): Gtk-WARNING **: 12:08:46.830: Theme parsing error: <data>:2:27: The style property GtkWidget:focus-padding is deprecated and shouldn't be used anymore. It will be removed in a future version
+
+(pcmanfm:28865): Gtk-WARNING **: 12:08:46.830: Theme parsing error: <data>:3:30: The style property GtkWidget:focus-line-width is deprecated and shouldn't be used anymore. It will be removed in a future version
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.831: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.831: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.831: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.831: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.831: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.831: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.831: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.831: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.831: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.831: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.833: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.834: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.834: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.834: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.835: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.835: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.836: GFileInfo created without standard::is-hidden
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.836: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.838: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:46.838: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:52.418: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:52.419: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:52.419: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:52.419: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:52.419: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:52.419: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:52.419: GFileInfo created without standard::is-hidden
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:52.419: file ../../../gio/gfileinfo.c: line 1632 (g_file_info_get_is_hidden): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:52.419: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:08:52.419: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.039: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.040: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.041: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.042: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.043: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.044: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.044: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.044: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.044: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.044: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.044: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.045: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.045: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.045: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.045: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.045: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): Gtk-WARNING **: 12:09:03.044: Failed to set text from markup due to error parsing markup: Error on line 1: Entity did not end with a semicolon; most likely you used an ampersand character without intending to start an entity — escape ampersand as &amp;
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.046: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.046: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.046: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.046: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.046: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.046: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.047: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.047: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.047: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.047: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.048: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.048: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.048: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.048: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.048: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.048: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.048: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.048: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:03.049: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): Gtk-WARNING **: 12:09:03.145: Failed to set text from markup due to error parsing markup: Error on line 1: Entity did not end with a semicolon; most likely you used an ampersand character without intending to start an entity — escape ampersand as &amp;
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.935: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.935: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.935: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.935: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.935: GFileInfo created without standard::content-type
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.935: file ../../../gio/gfileinfo.c: line 1821 (g_file_info_get_content_type): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.935: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.935: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.935: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.935: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.935: GFileInfo created without standard::edit-name
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.936: file ../../../gio/gfileinfo.c: line 1742 (g_file_info_get_edit_name): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.936: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.936: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.936: GFileInfo created without standard::is-symlink
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.936: file ../../../gio/gfileinfo.c: line 1676 (g_file_info_get_is_symlink): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.936: GFileInfo created without standard::is-backup
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:08.936: file ../../../gio/gfileinfo.c: line 1654 (g_file_info_get_is_backup): should not be reached
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:16.451: GFileInfo created without standard::size
+
+(pcmanfm:28865): GLib-GIO-CRITICAL **: 12:09:16.451: file ../../../gio/gfileinfo.c: line 1845 (g_file_info_get_size): should not be reached
+
+(pcmanfm:28865): Gtk-WARNING **: 12:09:49.240: gtk_menu_detach(): menu is not attached

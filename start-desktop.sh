@@ -25,18 +25,19 @@ mkdir -p "$HOME/.config/lxpanel/LXDE/panels"
 cat <<EOF > "$HOME/.config/lxpanel/LXDE/panels/panel"
 Global {
     edge=bottom
-    allign=left
+    allign=center
     margin=0
     widthtype=percent
     width=100
-    height=30
+    height=45
+    iconsize=40
 }
 
 # 1. Start Menu (Raspbian style)
 Plugin {
     type=menu
     Config {
-        image=/usr/share/pixmaps/raspi-logo.png
+        image=/usr/share/pixmaps/debian-logo.png
     }
 }
 
@@ -102,8 +103,9 @@ nohup fluxbox > /dev/null 2>&1 &
 export XDG_CURRENT_DESKTOP=LXDE
 nohup lxpanel --profile LXDE > /tmp/lxpanel.log 2>&1 &
 
-thunar --daemon > /dev/null 2>&1 &
+wmctrl -i -r $(wmctrl -l | grep "lxpanel" | cut -d ' ' -f 1) -b add,sticky,above
 
+thunar --daemon > /dev/null 2>&1 &
 
 nohup dunst > /tmp/dunst.log 2>&1 &
 
@@ -120,6 +122,10 @@ if [ -f "$WALLPAPER_PATH" ]; then
 fi
 
 nohup pcmanfm --desktop 2>&1 &
+
+fc-cache -f -v
+
+nohup node chrome-fix.js 2>&1 &
 
 echo "🚀 Environment ready."
 exit 0

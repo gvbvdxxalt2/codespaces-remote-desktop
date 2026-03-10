@@ -32,6 +32,7 @@ sudo apt-get install -y \
     libx11-dev \
     libxi-dev \
     x11-xserver-utils \
+    fonts-noto-color-emoji \
     dunst \
     feh \
     nitrogen \

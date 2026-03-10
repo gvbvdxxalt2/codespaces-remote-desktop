@@ -196,23 +196,42 @@ document.addEventListener("keyup",(event) => {
 });
 
 document.addEventListener("wheel", (event) => {
+    // 1. Prevent native browser scrolling/zooming
     event.preventDefault();
 
     if (appCanvas.hidden || !currentPeer) {
         return;
     }
 
-    var normalizedX = event.deltaX / 10;
-    var normalizedY = event.deltaY / 10;
+    // 2. Normalize deltas (Standardizing to pixels)
+    // Some browsers report lines (mode 1) or pages (mode 2). 
+    // We convert them to a roughly consistent pixel value.
+    let deltaX = event.deltaX;
+    let deltaY = event.deltaY;
 
-    normalizedY = normalizedY * -1; 
+    if (event.deltaMode === 1) { // DOM_DELTA_LINE
+        deltaX *= 40;
+        deltaY *= 40;
+    } else if (event.deltaMode === 2) { // DOM_DELTA_PAGE
+        deltaX *= 800;
+        deltaY *= 800;
+    }
+
+    // 3. Sensitivity Adjustment
+    // Instead of raw division, use a factor that makes it feel natural.
+    // If it's too fast, increase the divisor. If too slow, decrease it.
+    var normalizedX = Math.round(deltaX / 15);
+    var normalizedY = Math.round(deltaY / 15);
 
     try {
         currentPeer.send(JSON.stringify({
             type: "wheel",
-            m: [normalizedX, normalizedY],
+            // We send the discrete 'ticks' for xdotool on the server side
+            m: [-normalizedX, -normalizedY],
         }));
-    } catch(e) {}
+    } catch(e) {
+        console.error("Failed to send wheel event:", e);
+    }
 }, { passive: false });
 
 appScreen.append(appCanvas);
