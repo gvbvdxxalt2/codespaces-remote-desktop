@@ -27,8 +27,8 @@ video.addEventListener("loadedmetadata", (event) => {
   var width = event.target.videoWidth;
   var height = event.target.videoHeight;
 
-  appCanvas.width = width;
-  appCanvas.height = height;
+  appCanvas.width = width*4;
+  appCanvas.height = height*4;
 });
 
 function updateInterval(peerConn) {
