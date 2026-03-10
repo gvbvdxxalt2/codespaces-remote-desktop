@@ -171,6 +171,12 @@ document.addEventListener("keydown",(event) => {
     }
 
     if (currentPeer) {
+
+        if (event.key.toLowerCase() == "u" && event.ctrlKey && event.shiftKey) {
+            window.alert("Special key pressed!");
+            return;
+        }
+
         try{
             currentPeer.send(JSON.stringify({
                 type: "key",

@@ -1,24 +1,12 @@
 
 var downloadTransfers = {};
 
-function uint8ToText(uint8) {
-    var i = 0;
-    var txt = "";
-    while (i < uint8.length) {
-        txt += String.fromCharCode(uint8[i]);
-        i += 1;
-    }
-    return txt;
+function uint8ToJSONable(uint8) {
+    return Array.from(uint8);
 }
 
-function textToUint8(txt) {
-    var i = 0;
-    var uint8 = new Uint8Array(txt.length);
-    while (i < uint8.length) {
-        uint8[i] = txt[i].fromCharCode();
-        i += 1;
-    }
-    return uint8;
+function JSONableToUint8(jsonable) {
+    return Uint8Array.from(jsonable);
 }
 
 function sendDownloadRequest(peerConn,filePath,ProgressMonitor) {
@@ -47,7 +35,7 @@ function sendDownloadRequest(peerConn,filePath,ProgressMonitor) {
     setChunkTimeout();
 
     downloadTransfers[id] = function (chunkText,maximumChunks) {
-        var chunk = textToUint8(chunkText);
+        var chunk = uint8ToJSONable(chunkText);
         chunks.push(chunk);
         if (onProgress) {
             onProgress(chunks.length,maximumChunks);
@@ -148,7 +136,7 @@ function handleUploadFile(id) {
         peerConn.send(JSON.stringify({
             type: "upload",
             p: targetPath,
-            c: uint8ToText(chunkUint)
+            c: uint8ToJSONable(chunkUint)
         }));
         progressCallback(curByte,length);
     }catch(e){
