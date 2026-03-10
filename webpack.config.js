@@ -24,6 +24,11 @@ module.exports = {
     },
     //minimize: false
   },
+  resolve: {
+    fallback: {
+      "path": require.resolve("path-browserify")
+    }
+  },
   output: {
     path: path.resolve(__dirname, "public"),
     filename: "[name].bundle.js",
