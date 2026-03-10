@@ -48,6 +48,11 @@ sudo apt-get install -y \
     libcanberra-gtk3-module \
     libcanberra-common \
     sound-theme-freedesktop \
+    feh \
+    wmctrl \
+    lxpanel \
+    lxmenu-data \
+    adwaita-icon-theme-full \
     synaptic \
     chromium \
     chromium-browser \
