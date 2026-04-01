@@ -1,3 +1,4 @@
+var elements = require("../../gp2/elements.js");
 var FileExplorer = require("js-fileexplorer");
 
 var explorerOpts = {
