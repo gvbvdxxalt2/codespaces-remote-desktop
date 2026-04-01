@@ -56,6 +56,8 @@ mkdir -p "$HOME/.config/lxpanel/LXDE/panels" "$HOME/.fluxbox" "$HOME/Desktop"
 cat <<EOF > "$HOME/.fluxbox/init"
 session.screen0.margin: 30 0 45 0
 session.screen0.edgeSnapThreshold: 15
+session.screen0.autoRaise: true
+session.screen0.strictFocusOrder: false
 EOF
 
 mkdir -p "$HOME/.local/share/applications"
