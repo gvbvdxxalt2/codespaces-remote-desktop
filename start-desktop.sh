@@ -18,7 +18,7 @@ rm -rf /tmp/.X11-unix/X99 /tmp/.X99-lock /tmp/lxpanel.pid
 
 # --- 2. ENVIRONMENT ---
 export DISPLAY=:99
-export RESOLUTION="1280x720"
+export RESOLUTION="1920x1080"
 export XDG_CONFIG_DIRS=/etc/xdg
 export XDG_DATA_DIRS=/usr/share
 export GTK_THEME=Adwaita
@@ -76,11 +76,11 @@ Global {
     margin=0
     widthtype=percent
     width=100
-    height=45
+    height=64
     transparent=0
     tintcolor=#2e3440
     alpha=255
-    iconsize=32
+    iconsize=40
 }
 
 Plugin {
@@ -179,5 +179,7 @@ if command -v feh > /dev/null && [ -f "$WALLPAPER_PATH" ]; then
 fi
 
 nohup pcmanfm --desktop > /dev/null 2>&1 &
+
+gsettings set org.gnome.desktop.interface scaling-factor 2
 
 echo "🚀 Desktop Environment ready."

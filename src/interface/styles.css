@@ -59,7 +59,6 @@ body {
 }
 
 .rdScreenCanvas {
-  image-rendering: pixelated;
   user-select: none;
 
   position: fixed;

@@ -44,6 +44,9 @@ function updateInterval(peerConn) {
 
     if (video.srcObject) {
         ctx.drawImage(video, 0, 0, appCanvas.width, appCanvas.height);
+        if (video.buffered.length > 0) {
+            video.currentTime = video.buffered.end(video.buffered.length - 1);
+        }
     }
     try{
         video.play();
@@ -61,13 +64,74 @@ function updateInterval(peerConn) {
 }
 
 function startUpdateLoop(peerConn) {
-    video.srcObject = currentStream;
-    clearInterval(interval);
-    interval = setInterval(() => {
-        updateInterval(peerConn);
-    }, 1000/32);
+    const videoTrack = currentStream.getVideoTracks()[0];
+    const settings = videoTrack.getSettings();
 
-    previousMousePos = [null,null];
+    // 1. Set the internal resolution immediately based on the track
+    appCanvas.width = settings.width || 1280;
+    appCanvas.height = settings.height || 720;
+
+    // 2. Start the Input/Sizing loop (Logic previously in updateInterval)
+    startInputLoop(peerConn);
+
+    if (window.MediaStreamTrackProcessor) {
+        const processor = new MediaStreamTrackProcessor(videoTrack);
+        const reader = processor.readable.getReader();
+
+        async function readFrame() {
+            const { done, value: frame } = await reader.read();
+            if (done) return;
+            if (frame) {
+                ctx.drawImage(frame, 0, 0, appCanvas.width, appCanvas.height);
+                frame.close(); 
+            }
+            requestAnimationFrame(readFrame);
+        }
+        readFrame();
+    } else {
+        // Fallback for non-supported browsers
+        video.srcObject = currentStream;
+        video.play().catch(()=>{});
+        
+        function renderVideo() {
+            if (video.srcObject) {
+                ctx.drawImage(video, 0, 0, appCanvas.width, appCanvas.height);
+                // Sync to latest buffer
+                if (video.buffered.length > 0) {
+                    video.currentTime = video.buffered.end(video.buffered.length - 1);
+                }
+            }
+            requestAnimationFrame(renderVideo);
+        }
+        renderVideo();
+    }
+}
+
+function startInputLoop(peerConn) {
+    currentPeer = peerConn;
+    clearInterval(interval);
+    
+    interval = setInterval(() => {
+        // --- RESIZING LOGIC (Fixes the "Tiny Screen") ---
+        var scale = window.innerHeight / appCanvas.height;
+        if (scale > (window.innerWidth / appCanvas.width)) {
+            scale = window.innerWidth / appCanvas.width;
+        }
+        appCanvas.style.width = (appCanvas.width * scale) + "px";
+        appCanvas.style.height = (appCanvas.height * scale) + "px";
+
+        // --- INPUT LOGIC ---
+        if (typeof mousePos[0] == "number") {
+            var isDiff = JSON.stringify(mousePos) !== JSON.stringify(previousMousePos);
+            if (isDiff) {
+                peerConn.send(JSON.stringify({
+                    type: "mouse",
+                    p: mousePos
+                }));
+                previousMousePos = Array.from(mousePos);
+            }
+        }
+    }, 1000 / 60);
 }
 
 function handlePeerConnection(peerConn) {
@@ -240,24 +304,6 @@ document.addEventListener("wheel", (event) => {
     }
 }, { passive: false });
 
-document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible" && video.srcObject) {
-        
-        // Re-assigning the stream forces the browser to flush its internal 
-        // playback buffer and grab the absolute newest frame.
-        let tempStream = video.srcObject;
-        video.srcObject = null;
-        try{video.play();}catch(e){}
-        setTimeout(() => {
-            video.srcObject = tempStream;
-            video.play().catch(e => console.error("Playback failed on focus:", e)).then(() => {
-                video.currentTime = video.duration;
-                video.play().catch(e => {});
-            });
-        },100);
-    }
-});
-
 appScreen.append(appCanvas);
 
 var {uploadFile} = require("./filesend.js");
@@ -290,5 +336,24 @@ function sendUploadTest(peerConn) {
 
     input.click();
 }
+
+var isFixingVideo = false;
+
+document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") {
+        if (!video.srcObject || !currentStream || !currentPeer || isFixingVideo) {
+            return;
+        }
+        isFixingVideo = true;
+        const stream = video.srcObject;
+        
+        video.srcObject = null;
+        video.load();
+        video.srcObject = stream;
+        video.play().catch(e => console.error("Recovery failed:", e));
+        
+        isFixingVideo = false;
+    }
+});
 
 module.exports = {handlePeerConnection};

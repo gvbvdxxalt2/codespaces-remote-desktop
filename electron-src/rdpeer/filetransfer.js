@@ -3,7 +3,7 @@ var os = require("os");
 var path = require("path");
 var {exec} = require("child_process");
 
-var UPLOAD_FOLDER = "Uploads/";
+var UPLOAD_FOLDER = path.join(os.homedir(),"Downloads");
 
 var downloadingFiles = {};
 
@@ -20,7 +20,7 @@ function handleUploadChunk(json,peerConn) {
 
         try{
             if (!json.outside) {
-                filePath = json.outside;
+                filePath = path.join(UPLOAD_FOLDER,json.p);
             }
         }catch(e){
             console.log(`[FT]: Unable to generate path for ${json.p}. Error: ${e}`);
@@ -49,10 +49,6 @@ function handleUploadChunk(json,peerConn) {
     if (peerConn.__ftId !== transfer.peerConn.__ftId) {
         //Another peer is trying to upload to the same id.
         //Reject it's packets.
-        return;
-    }
-    if (json.p !== transfer.filePath) {
-        //Reject the packet because the path doesn't match up.
         return;
     }
 

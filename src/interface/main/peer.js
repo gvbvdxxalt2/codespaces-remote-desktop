@@ -10,6 +10,9 @@ function getNewPeer() {
         config: peerConfig,
         channelConfig: { ordered: false, maxRetransmits: 0 },
         trickle: true,
+        sdpTransform: function (sdp) {
+            return sdp.replace(/a=mid:video\r\n/g, 'a=mid:video\r\na=extmap-allow-mixed\r\n');
+        }
     });
 
     handlePeerConnection(currentPeer);
