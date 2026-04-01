@@ -33,16 +33,31 @@ var elementJSON = [
         children: [
             {
                 element: "div",
-                gid: "menuBar",
-                className: "menuBar"
+                gid: "appContent-explorer",
+                className: "appContent",
+                children: [
+                ]
             },
             {
                 element: "div",
-                gid: "appContent",
-                className: "appContent"
-            }
+                gid: "appContent-desktop",
+                className: "appContent",
+                children: [
+                    {
+                        element: "canvas",
+                        className: "rdScreenCanvas",
+                        gid: "appDesktopScreen"
+                    },
+                ]
+            },
+
+            {
+                element: "div",
+                gid: "menuBar",
+                className: "menuBar"
+            },
         ]
-    }
+    },
 ];
 
 elements.appendElementsFromJSON(document.body, elementJSON);

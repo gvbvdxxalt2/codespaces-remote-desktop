@@ -1,12 +1,9 @@
 
 body {
-    background: #2e2e2e;
-    color: #ededed;
+    background: #000000;
+    color: #fafafa;
     font-family: arial;
-
-    --menu-bar-height: 30px;
 }
-
 
 
 .button {
@@ -63,30 +60,70 @@ body {
 .rdScreenCanvas {
   user-select: none;
 
-  position: fixed;
-  top: var(--menu-bar-height);
+  position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, -50%);
 
   background: #000000;
   min-width: 100px;
   min-height: 100px;
 }
-
-.menuBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--menu-bar-height);
-  background:rgba(0, 0, 0, 0.5);
-  color: rgba(255, 255, 255, 1);
-}
-
 .appContent {
   position: fixed;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  height: calc(100svh - 30px);
+}
+
+.menuBar {
+  all: unset;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: calc(100svh - var(--menu-bar-height));
+  height: 30px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.menuBarItem {
+  all: unset;
+  color: #ffffff;
+  height: 30px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 0 4px;
+  font-weight: bold;
+  flex-grow: 0;
+  flex-shrink: 0;
+  gap: 3px;
+  transition: 0.07s;
+}
+.menuBarItem:hover {
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.menuBarItemSelected {
+  background: rgba(255, 255, 255, 0.5);
+  cursor: unset;
+}
+
+.menuBarItemSelected > .menuBarIcon {
+  transform: scale(1.2);
+}
+
+.menuBarIcon {
+  height: 20px;
+  transition: 0.07s;
 }

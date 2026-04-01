@@ -1,3 +1,4 @@
+try{
 require("./interface.js");
 
 var elements = require("../gp2/elements.js");
@@ -8,3 +9,6 @@ startButton.onclick = function () {
     startButton.hidden = true;
     start()
 };
+}catch(e){
+    window.alert(e);
+}

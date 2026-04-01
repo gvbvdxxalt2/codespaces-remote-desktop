@@ -2,6 +2,7 @@ var peerConfig = require("../../peer-config.js");
 var elements = require("../../gp2/elements.js");
 var peer = require("simple-peer");
 var { handlePeerConnection } = require("./stream-video.js");
+var { handlePeerConnectionFM } = require("./explorer.js");
 var currentPeer = null;
 
 function getNewPeer() {
@@ -16,6 +17,7 @@ function getNewPeer() {
     });
 
     handlePeerConnection(currentPeer);
+    handlePeerConnectionFM(currentPeer);
     
     return currentPeer;
 }

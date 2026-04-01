@@ -1,16 +1,17 @@
 
 const { eventNames } = require("process");
 var elements = require("../../gp2/elements.js");
-var appContent = elements.getGPId("appContent");
+var appContent = elements.getGPId("appContent-desktop");
 
-var MENU_BAR_HEIGHT = 20;
+var MENU_BAR_HEIGHT = 30;
 
-var appCanvas = elements.createElementsFromJSON([
-    {
-        element: "canvas",
-        className: "rdScreenCanvas"
-    }
-])[0];
+var appCanvas = elements.getGPId("appDesktopScreen");
+
+function isSortaHidden(elm) {
+    var rect = elm.getBoundingClientRect();
+    var isHidden = rect.width === 0 && rect.height === 0;
+    return isHidden;
+}
 
 var currentStream = null;
 var video = document.createElement("video");
@@ -181,7 +182,7 @@ function getMousePosition(event, onElement, size) {
 }
 
 appCanvas.addEventListener("mousemove",(event) => {
-    if (appCanvas.hidden) {
+    if (isSortaHidden(appCanvas)) {
         return;
     }
 
@@ -191,7 +192,7 @@ appCanvas.addEventListener("mousemove",(event) => {
 });
 
 appCanvas.addEventListener("mousedown",(event) => {
-    if (appCanvas.hidden) {
+    if (isSortaHidden(appCanvas)) {
         return;
     }
 
@@ -224,7 +225,7 @@ document.addEventListener("mouseup",(event) => {
 });
 
 document.addEventListener("contextmenu", (event) => {
-    if (appCanvas.hidden) {
+    if (isSortaHidden(appCanvas)) {
         return;
     }
     
@@ -234,16 +235,16 @@ document.addEventListener("contextmenu", (event) => {
 });
 
 document.addEventListener("keydown",(event) => {
-    if (appCanvas.hidden) {
+    if (isSortaHidden(appCanvas)) {
         return;
     }
 
     if (currentPeer) {
 
-        if (event.key.toLowerCase() == "u" && event.ctrlKey && event.shiftKey) {
+        /*if (event.key.toLowerCase() == "u" && event.ctrlKey && event.shiftKey) {
             sendUploadTest(currentPeer);
             return;
-        }
+        }*/
 
         try{
             currentPeer.send(JSON.stringify({
@@ -270,16 +271,12 @@ document.addEventListener("keyup",(event) => {
 });
 
 document.addEventListener("wheel", (event) => {
-    // 1. Prevent native browser scrolling/zooming
     event.preventDefault();
 
-    if (appCanvas.hidden || !currentPeer) {
+    if (isSortaHidden(appCanvas) || !currentPeer) {
         return;
     }
 
-    // 2. Normalize deltas (Standardizing to pixels)
-    // Some browsers report lines (mode 1) or pages (mode 2). 
-    // We convert them to a roughly consistent pixel value.
     let deltaX = event.deltaX;
     let deltaY = event.deltaY;
 
@@ -291,24 +288,18 @@ document.addEventListener("wheel", (event) => {
         deltaY *= 800;
     }
 
-    // 3. Sensitivity Adjustment
-    // Instead of raw division, use a factor that makes it feel natural.
-    // If it's too fast, increase the divisor. If too slow, decrease it.
     var normalizedX = Math.round(deltaX / 15);
     var normalizedY = Math.round(deltaY / 15);
 
     try {
         currentPeer.send(JSON.stringify({
             type: "wheel",
-            // We send the discrete 'ticks' for xdotool on the server side
             m: [-normalizedX, -normalizedY],
         }));
     } catch(e) {
         console.error("Failed to send wheel event:", e);
     }
 }, { passive: false });
-
-appContent.append(appCanvas);
 
 var {uploadFile} = require("./filesend.js");
 
@@ -359,5 +350,7 @@ document.addEventListener("visibilitychange", () => {
         isFixingVideo = false;
     }
 });
+
+require("./tab.js");
 
 module.exports = {handlePeerConnection};
