@@ -13,7 +13,18 @@ var explorerOpts = {
 
             if (this.IsMappedFolder(folder))  {
                 folder.SetEntries([
-                    
+                    {
+                        "name": "srb2-mod.pk3",   // The text displayed in the list
+                        "type": "file",          // Must be exactly "file" or "folder"
+                        "size": 1024,            // Number in bytes (the UI formats this automatically)
+                        "hash": "unique_id_1"    // A unique string (filename or ID) so the UI can track it
+                    },
+                    {
+                        "name": "Addons",
+                        "type": "folder",
+                        "size": 0,
+                        "hash": "unique_id_2"
+                    }
                 ]);
             }
         }
