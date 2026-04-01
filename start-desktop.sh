@@ -24,7 +24,7 @@ rm -rf /tmp/.X11-unix/X99 /tmp/.X99-lock /tmp/lxpanel.pid
 
 # --- 3. ENVIRONMENT ---
 export DISPLAY=:99
-export RESOLUTION="1518x853"
+export RESOLUTION="1366x768"
 export XDG_CONFIG_DIRS=/etc/xdg
 export XDG_DATA_DIRS=/usr/share
 # Force the theme in the environment
@@ -33,7 +33,7 @@ WALLPAPER_PATH="./xp-wallpaper.jpg"
 
 # --- 4. START Xvfb ---
 echo "🖥️ Starting Xvfb on $DISPLAY..."
-Xvfb $DISPLAY -screen 0 ${RESOLUTION}x24+32 -ac +extension GLX +render -noreset > /tmp/xvfb.log 2>&1 &
+Xvfb $DISPLAY -screen 0 ${RESOLUTION}x24 -ac +extension GLX +render -noreset > /tmp/xvfb.log 2>&1 &
 
 echo "⏳ Waiting for display $DISPLAY..."
 until xdpyinfo -display $DISPLAY > /dev/null 2>&1; do sleep 0.5; done

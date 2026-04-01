@@ -30,6 +30,18 @@ var elementJSON = [
         element: "div",
         gid: "appScreen",
         hidden: true,
+        children: [
+            {
+                element: "div",
+                gid: "menuBar",
+                className: "menuBar"
+            },
+            {
+                element: "div",
+                gid: "appContent",
+                className: "appContent"
+            }
+        ]
     }
 ];
 

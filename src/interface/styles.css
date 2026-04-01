@@ -3,6 +3,8 @@ body {
     background: #2e2e2e;
     color: #ededed;
     font-family: arial;
+
+    --menu-bar-height: 30px;
 }
 
 
@@ -62,11 +64,29 @@ body {
   user-select: none;
 
   position: fixed;
-  top: 50%;
+  top: var(--menu-bar-height);
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
 
   background: #000000;
   min-width: 100px;
   min-height: 100px;
+}
+
+.menuBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--menu-bar-height);
+  background:rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 1);
+}
+
+.appContent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100svh - var(--menu-bar-height));
 }

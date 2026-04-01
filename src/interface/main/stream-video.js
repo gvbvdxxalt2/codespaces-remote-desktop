@@ -1,7 +1,9 @@
 
 const { eventNames } = require("process");
 var elements = require("../../gp2/elements.js");
-var appScreen = elements.getGPId("appScreen");
+var appContent = elements.getGPId("appContent");
+
+var MENU_BAR_HEIGHT = 20;
 
 var appCanvas = elements.createElementsFromJSON([
     {
@@ -32,10 +34,10 @@ video.addEventListener("loadedmetadata", (event) => {
 });
 
 function updateInterval(peerConn) {
-
-    var scale = window.innerHeight / appCanvas.height;
-    if (scale > (window.innerWidth / appCanvas.width)) {
-        scale = window.innerWidth / appCanvas.width;
+    var bounding = appContent.getBoundingClientRect();
+    var scale = bounding.height / appCanvas.height;
+    if (scale > (bounding.width / appCanvas.width)) {
+        scale = bounding.width / appCanvas.width;
     }
     appCanvas.style.width = (appCanvas.width * scale)+"px";
     appCanvas.style.height = (appCanvas.height * scale)+"px";
@@ -114,9 +116,10 @@ function startInputLoop(peerConn) {
     
     interval = setInterval(() => {
         // --- RESIZING LOGIC (Fixes the "Tiny Screen") ---
-        var scale = window.innerHeight / appCanvas.height;
-        if (scale > (window.innerWidth / appCanvas.width)) {
-            scale = window.innerWidth / appCanvas.width;
+        var bounding = appContent.getBoundingClientRect();
+        var scale = bounding.height / appCanvas.height;
+        if (scale > (bounding.width / appCanvas.width)) {
+            scale = bounding.width / appCanvas.width;
         }
         appCanvas.style.width = (appCanvas.width * scale) + "px";
         appCanvas.style.height = (appCanvas.height * scale) + "px";
@@ -305,7 +308,7 @@ document.addEventListener("wheel", (event) => {
     }
 }, { passive: false });
 
-appScreen.append(appCanvas);
+appContent.append(appCanvas);
 
 var {uploadFile} = require("./filesend.js");
 
