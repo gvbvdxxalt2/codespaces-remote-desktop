@@ -18,6 +18,7 @@ pkill -9 lxpanel 2>/dev/null
 pkill -9 pcmanfm 2>/dev/null
 pkill -9 xsettingsd 2>/dev/null
 pkill -9 dunst 2>/dev/null
+pkill -9 picom 2>/dev/null
 fuser -k 99/tcp 2>/dev/null
 rm -rf /tmp/.X11-unix/X99 /tmp/.X99-lock /tmp/lxpanel.pid
 
@@ -172,7 +173,6 @@ EOF
 nohup xsettingsd > /dev/null 2>&1 &
 
 # Start Compositor for rounded corners and shadows (Windows 11 feel)
-nohup picom --backend xrender --corner-radius 0 --shadow --shadow-opacity 0 > /dev/null 2>&1 &
 
 # Fix Scaling for Chromebook (120 DPI = sharp 125% scale)
 echo "Xft.dpi: 120" | xrdb -merge

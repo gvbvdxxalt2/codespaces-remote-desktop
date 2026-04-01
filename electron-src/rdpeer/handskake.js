@@ -13,6 +13,7 @@ function handleRemoteDesktopConnect(ws) {
     var timeout = setTimeout(cleanupWebsocket, signalTimeout);
     
     peer.on("signal", (data) => {
+
         ws.send(JSON.stringify({signal: data}));
         clearTimeout(timeout);
         timeout = setTimeout(cleanupWebsocket, signalTimeout);

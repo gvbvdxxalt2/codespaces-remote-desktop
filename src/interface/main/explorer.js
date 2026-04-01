@@ -1,0 +1,1 @@
+var FileExplorer = require("js-fileexplorer");

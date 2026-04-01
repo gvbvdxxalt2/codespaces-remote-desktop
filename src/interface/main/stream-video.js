@@ -84,10 +84,11 @@ function startUpdateLoop(peerConn) {
             if (frame) {
                 ctx.drawImage(frame, 0, 0, appCanvas.width, appCanvas.height);
                 frame.close(); 
+            } else {
+                try{frame.close();}catch(e){}
             }
-            requestAnimationFrame(readFrame);
         }
-        readFrame();
+        setInterval(readFrame,1000/100);
     } else {
         // Fallback for non-supported browsers
         video.srcObject = currentStream;
@@ -131,7 +132,7 @@ function startInputLoop(peerConn) {
                 previousMousePos = Array.from(mousePos);
             }
         }
-    }, 1000 / 32);
+    }, 1000 / 64);
 }
 
 function handlePeerConnection(peerConn) {
