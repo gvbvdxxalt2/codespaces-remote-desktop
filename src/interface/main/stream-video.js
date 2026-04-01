@@ -245,7 +245,7 @@ document.addEventListener("keydown",(event) => {
         try{
             currentPeer.send(JSON.stringify({
                 type: "key",
-                key: event.key,
+                code: event.code,
                 down: true
             }));
             event.preventDefault();
@@ -258,7 +258,7 @@ document.addEventListener("keyup",(event) => {
         try{
             currentPeer.send(JSON.stringify({
                 type: "key",
-                key: event.key,
+                code: event.code,
                 down: false
             }));
             event.preventDefault();

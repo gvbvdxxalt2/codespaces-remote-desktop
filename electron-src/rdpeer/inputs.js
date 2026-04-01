@@ -1,17 +1,21 @@
-
-var inputReplacers = {
+var codeReplacers = {
+    'Semicolon': ';',
+    'Quote': "'",
+    'Comma': ',',
+    'Period': '.',
+    'Slash': '/',
+    'Backslash': '\\',
+    'Backquote': '`',
+    'BracketLeft': '[',
+    'BracketRight': ']',
+    'Minus': '-',
+    'Equal': '=',
+    'Space': 'space', // 'space' is usually still a string in RobotJS
     'Enter': 'enter',
-    'Escape': 'escape',
-    'ArrowUp': 'up',
-    'ArrowDown': 'down',
-    'ArrowLeft': 'left',
-    'ArrowRight': 'right',
-    'Backspace': 'backspace',
     'Tab': 'tab',
-    'Shift': 'shift',
-    ' ': 'space',
-    'Control': 'control',
-    'Alt': 'alt'
+    'Backspace': 'backspace',
+    'Delete': 'delete',
+    'Escape': 'escape'
 };
 
 var remote = require("@electron/remote");
@@ -72,31 +76,49 @@ function handleInputTypes(json, peerConn) {
     }
 
     if (json.type == "key") {
-        var key = inputReplacers[json.key];
-        if (!key) {
-            key = ""+json.key;
+        var code = json.code; 
+        var key;
+
+        if (code.startsWith('Key')) {
+            key = code.slice(3).toLowerCase();
+        } else if (code.startsWith('Digit')) {
+            key = code.slice(5);
+        } else if (code.startsWith('Arrow')) {
+            key = code.slice(5).toLowerCase(); 
+        } else {
+            if (code.includes('Shift')) {
+                key = 'shift';
+            } else if (code.includes('Control')) {
+                key = 'control';
+            } else if (code.includes('Alt')) {
+                key = 'alt';
+            } else {
+                key = codeReplacers[code] || code.toLowerCase();
+            }
         }
+
         if (!peerConn.__keysPressed) {
             peerConn.__keysPressed = {};
         }
+
         if (json.down) {
             peerConn.__keysPressed[key] = true;
+            remote.app.___keyToggle(key, "down");
         } else {
             delete peerConn.__keysPressed[key];
+            remote.app.___keyToggle(key, "up");
         }
-        remote.app.___keyToggle(
-            key,
-            json.down ? "down" : "up"
-        );
     }
 }
 
 function handleInputClose(peerConn) {
     for (var keyName of Object.keys(peerConn.__keysPressed)) {
-        remote.app.___keyToggle(
-            keyName,
-            "up"
-        );
+        try{
+            remote.app.___keyToggle(
+                keyName,
+                "up"
+            );
+        }catch(e){}
     }
 }
 
