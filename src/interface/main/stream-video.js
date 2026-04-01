@@ -131,7 +131,7 @@ function startInputLoop(peerConn) {
                 previousMousePos = Array.from(mousePos);
             }
         }
-    }, 1000 / 60);
+    }, 1000 / 32);
 }
 
 function handlePeerConnection(peerConn) {

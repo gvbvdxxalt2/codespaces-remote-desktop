@@ -7,69 +7,57 @@ while fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1 || fuser /var/lib/apt/li
     sleep 3
 done
 
-# --- 1. ROBUST CLEANUP ---
+# --- 1. INSTALL THEME ENGINES (The "Magic" Step) ---
+# Without these, Materia-light will never apply.
+
+# --- 2. ROBUST CLEANUP ---
 echo "🧹 Cleaning up existing sessions..."
 pkill -9 Xvfb 2>/dev/null
 pkill -9 fluxbox 2>/dev/null
 pkill -9 lxpanel 2>/dev/null
 pkill -9 pcmanfm 2>/dev/null
+pkill -9 xsettingsd 2>/dev/null
+pkill -9 dunst 2>/dev/null
 fuser -k 99/tcp 2>/dev/null
 rm -rf /tmp/.X11-unix/X99 /tmp/.X99-lock /tmp/lxpanel.pid
 
-# --- 2. ENVIRONMENT ---
+# --- 3. ENVIRONMENT ---
 export DISPLAY=:99
-export RESOLUTION="1920x1080"
+export RESOLUTION="1518x853"
 export XDG_CONFIG_DIRS=/etc/xdg
 export XDG_DATA_DIRS=/usr/share
-export GTK_THEME=Adwaita
+# Force the theme in the environment
+export GTK_THEME=Materia-light
 WALLPAPER_PATH="./xp-wallpaper.jpg"
 
-# --- 3. START Xvfb WITH DIAGNOSTIC LOGGING ---
+# --- 4. START Xvfb ---
 echo "🖥️ Starting Xvfb on $DISPLAY..."
-Xvfb $DISPLAY -screen 0 ${RESOLUTION}x24 -ac +extension GLX +render -noreset > /tmp/xvfb.log 2>&1 &
+Xvfb $DISPLAY -screen 0 ${RESOLUTION}x24+32 -ac +extension GLX +render -noreset > /tmp/xvfb.log 2>&1 &
 
 echo "⏳ Waiting for display $DISPLAY..."
-MAX_RETRIES=20
-COUNT=0
-until xdpyinfo -display $DISPLAY > /dev/null 2>&1; do
-    sleep 0.5
-    COUNT=$((COUNT+1))
-    if [ $COUNT -ge $MAX_RETRIES ]; then
-        echo "❌ ERROR: Xvfb failed to start. Check /tmp/xvfb.log"
-        cat /tmp/xvfb.log
-        exit 1
-    fi
-done
+until xdpyinfo -display $DISPLAY > /dev/null 2>&1; do sleep 0.5; done
 echo "✅ Xvfb is running."
 
-# --- 4. THEME & ICON REPAIR ---
-echo "🎨 Repairing Icon Caches..."
+# --- 5. THEME CONFIGURATION (GTK 2 & 3) ---
+echo "🎨 Applying Materia-light theme configs..."
 mkdir -p "$HOME/.config/gtk-3.0"
-echo -e "[Settings]\ngtk-icon-theme-name=Adwaita" > "$HOME/.config/gtk-3.0/settings.ini"
-echo 'gtk-icon-theme-name = "Adwaita"' > "$HOME/.gtkrc-2.0"
-sudo gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null
-sudo gtk-update-icon-cache -f /usr/share/icons/Adwaita 2>/dev/null
 
-# --- 5. CONFIGURATION ---
+cat <<EOF > "$HOME/.config/gtk-3.0/settings.ini"
+[Settings]
+gtk-theme-name=Materia-light
+gtk-icon-theme-name=Adwaita
+gtk-font-name=Roboto 10
+gtk-cursor-theme-name=Adwaita
+EOF
+
+cat <<EOF > "$HOME/.gtkrc-2.0"
+include "/usr/share/themes/Materia-light/gtk-2.0/gtkrc"
+gtk-theme-name="Materia-light"
+gtk-font-name="Roboto 10"
+EOF
+
+# --- 6. FLUXBOX & PANEL CONFIG ---
 mkdir -p "$HOME/.config/lxpanel/LXDE/panels" "$HOME/.fluxbox" "$HOME/Desktop"
-
-cat <<EOF > "$HOME/.fluxbox/init"
-session.screen0.margin: 30 0 45 0
-session.screen0.edgeSnapThreshold: 15
-session.screen0.autoRaise: true
-session.screen0.strictFocusOrder: false
-EOF
-
-mkdir -p "$HOME/.local/share/applications"
-
-cat <<EOF > "$HOME/.local/share/applications/file-manager.desktop"
-[Desktop Entry]
-Name=File Manager
-Exec=pcmanfm $HOME
-Icon=user-home
-Type=Application
-Terminal=false
-EOF
 
 cat <<EOF > "$HOME/.config/lxpanel/LXDE/panels/panel"
 Global {
@@ -78,11 +66,18 @@ Global {
     margin=0
     widthtype=percent
     width=100
-    height=64
-    transparent=0
-    tintcolor=#2e3440
+    height=46
+    transparent=1
+    tintcolor=#ffffff
     alpha=255
-    iconsize=40
+    autohide=0
+    heightwhenhidden=2
+    setdockwindow=1
+    setpartialstrut=1
+    usefontcolor=1
+    fontcolor=#1a1a1a
+    background=0
+    iconsize=32
 }
 
 Plugin {
@@ -106,82 +101,107 @@ Plugin {
 }
 
 Plugin {
-    type=taskbar
-    expand=1
+    type=space
     Config {
-        tooltips=1
-        IconsOnly=0
-        AcceptSkipPager=1
-        ShowAllDesks=0
+        Size=20
     }
 }
 
 Plugin {
-    type=clock
+    type=taskbar
+    expand=1
     Config {
-        ClockFmt=%R
-        TooltipFmt=%A %x
-        BoldFont=0
-        IconOnly=0
+        tooltips=1
+        IconsOnly=1
+        AcceptSkipPager=1
+        ShowAllDesks=0
+        UseCustomButton=1
     }
 }
 
 Plugin {
     type=tray
 }
+
+Plugin {
+    type=clock
+    Config {
+        ClockFmt=%-I:%M %p
+        TooltipFmt=%A %x
+        BoldFont=0
+        IconOnly=0
+    }
+}
 EOF
 
-# --- 6. APP STORE & OPTIMIZED CHROME SHORTCUTS ---
-echo "🛒 Creating shortcuts..."
-
-cat <<EOF > "$HOME/Desktop/google-chrome.desktop"
-[Desktop Entry]
-Name=Google Chrome
-# Optimized for container/Xvfb environment
-Exec=google-chrome-stable --password-store=basic --no-sandbox --disable-dev-shm-usage --disable-gpu --no-first-run
-Icon=google-chrome
-Type=Application
-Terminal=false
+# Force Fluxbox to use a lighter theme (Bloe matches white windows better)
+cat <<EOF > "$HOME/.fluxbox/init"
+session.screen0.toolbar.visible: false
+session.screen0.workspaces: 1
+session.screen0.focusModel: ClickToFocus
+session.styleFile: /usr/share/fluxbox/styles/bloe
+window.title.height: 28
+window.justify: center
 EOF
 
-chmod +x "$HOME/Desktop/"*.desktop
+# Notification Config (Dunst)
+mkdir -p "$HOME/.config/dunst"
+cat <<EOF > "$HOME/.config/dunst/dunstrc"
+[global]
+    font = "Roboto 10"
+    corner_radius = 12
+    background = "#FFFFFF"
+    foreground = "#1C1B1F"
+    frame_color = "#E1E2EC"
+    origin = "bottom-right"
+    offset = "20x20"
+    mouse_left_click = do_action, close_current
+EOF
 
 # --- 7. LAUNCH UI ---
 export $(dbus-launch)
 pulseaudio --start > /dev/null 2>&1 &
-xsetroot -display $DISPLAY -cursor_name left_ptr -solid "#2e3440"
+xsetroot -display $DISPLAY -cursor_name left_ptr -solid "#f0f0f0"
 
-echo "🪟 Launching Window Manager..."
+# Start the Settings Daemon (This makes the theme actually work)
+cat <<EOF > "$HOME/.xsettingsd"
+Net/ThemeName "Materia-light"
+Net/IconThemeName "Adwaita"
+Gtk/FontName "Roboto 10"
+EOF
+nohup xsettingsd > /dev/null 2>&1 &
+
+# Start Compositor for rounded corners and shadows (Windows 11 feel)
+nohup picom --backend xrender --corner-radius 0 --shadow --shadow-opacity 0 > /dev/null 2>&1 &
+
+# Fix Scaling for Chromebook (120 DPI = sharp 125% scale)
+echo "Xft.dpi: 120" | xrdb -merge
+
+echo "🪟 Launching Fluxbox..."
 nohup fluxbox > /dev/null 2>&1 &
-# Give Fluxbox a solid moment to initialize its geometry
 sleep 2 
 
-echo "🛠️ Starting LXPanel..."
-# Retry loop to ensure the panel actually stays alive
-for i in {1..3}; do
-    nohup lxpanel --profile LXDE > /tmp/lxpanel.log 2>&1 &
-    sleep 2
-    if pgrep -x "lxpanel" > /dev/null; then
-        echo "✅ LXPanel started successfully."
-        break
-    else
-        echo "⚠️ LXPanel failed to start, retrying ($i/3)..."
-        # clear any dead pid locks before retrying
-        rm -f /tmp/lxpanel.pid 
-    fi
-done
-
-# Ensure the panel stays on top if it survived the startup
-if pgrep -x "lxpanel" > /dev/null && command -v wmctrl &> /dev/null; then
-    wmctrl -r "lxpanel" -b add,sticky,above
-fi
-
-if command -v feh > /dev/null && [ -f "$WALLPAPER_PATH" ]; then
-    feh --bg-scale "$WALLPAPER_PATH"
-fi
-
+echo "🛠️ Starting LXPanel & PCManFM..."
+nohup lxpanel --profile LXDE > /tmp/lxpanel.log 2>&1 &
 nohup pcmanfm --desktop > /dev/null 2>&1 &
 
-gsettings set org.gnome.desktop.interface scaling-factor 2
+# Final safety check: ensure Chrome shortcut has the correct icon and flags
+cat <<EOF > "$HOME/Desktop/google-chrome.desktop"
+[Desktop Entry]
+Name=Google Chrome
+# Optimized for smoother mouse input on low-core machines
+Exec=google-chrome-stable \
+  --user-data-dir="$HOME/.config/google-chrome" \
+  --no-sandbox \
+  --disable-dev-shm-usage \
+  --disable-gpu \
+  --disable-software-rasterizer \
+  --disable-gpu-compositing \
+  --disable-accelerated-2d-canvas \
+  --num-raster-threads=1
+Icon=google-chrome
+Type=Application
+EOF
+chmod +x "$HOME/Desktop/"*.desktop
 
-echo "🚀 Desktop Environment ready."
+echo "🚀 Desktop Environment ready in Materia-Light."

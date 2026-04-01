@@ -7,6 +7,13 @@ var { handleFileTransferMessages, handleFTClose } = require("./filetransfer.js")
 
 async function initStream() {
     desktopStream = await navigator.mediaDevices.getDisplayMedia({
+      mandatory: {
+        chromeMediaSource: 'desktop',
+        minFrameRate: 20,
+        maxFrameRate: 60,
+        maxWidth: 640,
+        maxHeight: 360
+      },
       video: {
         displaySurface: "browser",
         cursor: "always",

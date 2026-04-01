@@ -19,7 +19,12 @@ sudo apt-get install -y \
     fluxbox lxpanel lxpanel-data lxmenu-data \
     pcmanfm thunar mousepad \
     adwaita-icon-theme-full hicolor-icon-theme dmz-cursor-theme \
-    feh nitrogen dunst
+    feh nitrogen dunst \
+    materia-gtk-theme \
+    fonts-roboto \
+    materia-gtk-theme lxappearance gtk2-engines-murrine gtk2-engines-pixbuf \
+    xsettingsd materia-gtk-theme gtk2-engines-murrine fonts-roboto \
+    picom
 
 # --- LAYER 3: AUDIO & MEDIA ---
 # Noble uses libasound2t64
