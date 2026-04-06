@@ -277,7 +277,7 @@ async function handleMove(json,peerConn) {
                 await fse.move(filePath, destFilePath, { overwrite: true });
 
                     peerConn.send(JSON.stringify({
-                        type: "move-success",
+                        type: "move-finish",
                         id,
                     }));
                 }catch(e){

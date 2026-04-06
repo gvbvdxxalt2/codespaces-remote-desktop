@@ -8,6 +8,20 @@ var {requestReaddir,requestMkdir,requestMove} = require("./filesend.js");
 
 var currentPeerConn = null;
 
+function getPathFromJSFMFolder(folder) {
+	return getPathFromIds(folder.GetPathIDs());
+}
+
+function getPathFromIds(ids) {
+				var pathParts = ids;
+			pathParts = pathParts.filter((p) => !!p); //Removes empty parts.
+			
+			var baseDir = pathParts.join("/");
+			baseDir = baseDir.split("/").filter((p) => !!p).join("/"); //Double run to remove empty paths (again).
+			if (!baseDir.endsWith("/")) baseDir += "/";
+			return baseDir;
+}
+
 var explorerOpts = {
     group: 'desktop-fm',
     capturebrowser: false,
@@ -39,11 +53,8 @@ var explorerOpts = {
 
             if (this.IsMappedFolder(folder))  {
 				try{
-					var curFolder = this.GetCurrentFolder();
-					var paths = curFolder.GetPath();
-					var actualPath = paths[paths.length-1][0];
-
-					var response = await requestReaddir(currentPeerConn,actualPath);
+					var baseDir = getPathFromJSFMFolder(folder);
+					var response = await requestReaddir(currentPeerConn,baseDir);
 
 					folder.SetEntries(
 						response.map((file) => {
@@ -53,8 +64,8 @@ var explorerOpts = {
 								"name": file.name,   // The text displayed in the list
 								"type": file.stat.dir ? "folder" : "file",
 								"size": file.stat.size || 0,
-								"id":file.path,
-								"hash":file.path,
+								"id":file.name,
+								"hash":file.name,
 								"thumb": preview
 							};
 						}));
@@ -67,30 +78,27 @@ var explorerOpts = {
         },
 
         onrename: async function(renamed, folder, entry, newname) {
-console.log('onrename');
-console.log(entry);
-console.log(newname);
-
-if (!currentPeerConn) {
-	renamed("No peer connection to rename on.");
-	return;
-}
-			var curFolder = this.GetCurrentFolder();
-			var paths = curFolder.GetPath();
-			var actualPath = paths[paths.length-1][0];
-			if (!actualPath.endsWith("/")) {
-				actualPath = "/";
+			if (!currentPeerConn) {
+				renamed(entry);
+				return;
 			}
 
-			var oldPath = actualPath + entry.name;
-			var newPath = actualPath + newname;
+			var baseDir = getPathFromJSFMFolder(folder);
+
+			var oldPath = baseDir + entry.name;
+			var newPath = baseDir + newname;
 
 			try{
 				await requestMove(currentPeerConn,oldPath,newPath);
 				entry.name = newname;
-				renamed(entry);
+				entry.id = newname;
+				setTimeout(() => {
+					renamed(entry);
+				},10);
 			}catch(e){
-				renamed(""+e);
+				console.error("Rename error: "+e);
+				renamed(entry);
+				this.SetNamedStatusBarText('folder', this.EscapeHTML('Failed to rename.  '+e));
 			}
 		},
 
@@ -103,7 +111,8 @@ if (!currentPeerConn) {
 				return;
 			}
 			try{
-				var entry = { name: 'New Folder', type: 'folder', id: 'New Folder', hash: 'New Folder' };
+				var defaultName = 'New Folder '+Date.now();
+				var entry = { name: defaultName, type: 'folder', id: defaultName, hash: defaultName };
 				var paths = folder.GetPath();
 				var actualPath = paths[paths.length-1][0];
 				if (!actualPath.endsWith("/")) {
@@ -111,7 +120,9 @@ if (!currentPeerConn) {
 				}
 				actualPath += entry.name;
 				await requestMkdir(currentPeerConn,actualPath);
-				created(entry);
+				setTimeout(() => {
+					created(entry);
+				},10);
 			}catch(e){
 				console.error(e);
 				created(""+e);

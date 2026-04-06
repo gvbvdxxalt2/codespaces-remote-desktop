@@ -353,7 +353,7 @@ async function handleJSON(json) {
         return;
     }
 
-    if (json.type == "move-success") {
+    if (json.type == "move-finish") {
         var id = json.id;
         var request = moveRequests[id];
         if (!request) {
