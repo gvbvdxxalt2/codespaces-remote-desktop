@@ -173,7 +173,141 @@ setInterval(() => {
     }
 },UPLOAD_SPEED);
 
+var readdirRequests = {};
+
+function requestReaddir(peerConn,readdirPath,isOutside) {
+    var id = "r"+Date.now()+"-"+Math.round(Math.random()*999999);
+
+    return new Promise((resolve, reject) => {
+        var timeout = null;
+        function resetTimeout() {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                reject("Request timeout");
+                readdirRequests[id] = 0;
+                delete readdirRequests[id];
+            },2500);
+        }
+
+        resetTimeout();
+
+        readdirRequests[id] = {
+            resolve: function (r) {
+                resolve(r);
+                clearTimeout(timeout);
+                readdirRequests[id] = 0;
+                delete readdirRequests[id];
+            }, reject, resetTimeout
+        };
+
+        peerConn.send(JSON.stringify({
+                type: "readdir",
+                p: readdirPath,
+                outside: isOutside,
+                id
+            }));
+    });
+}
+
+var mkdirRequests = {};
+
+function requestMkdir(peerConn,targetPath,isOutside) {
+    var id = "r"+Date.now()+"-"+Math.round(Math.random()*999999);
+
+    return new Promise((resolve, reject) => {   
+        var timeout = null;
+        function resetTimeout() {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                reject("Request timeout");
+                mkdirRequests[id] = 0;
+                delete mkdirRequests[id];
+            },2500);
+        }
+
+        resetTimeout();
+
+        mkdirRequests[id] = {
+            resolve: function (r) {
+                resolve(r);
+                clearTimeout(timeout);
+                mkdirRequests[id] = 0;
+                delete mkdirRequests[id];
+            }, reject, resetTimeout
+        };
+
+        peerConn.send(JSON.stringify({
+                type: "mkdir",
+                p: targetPath,
+                outside: isOutside,
+                id
+            }));
+    });
+}
+
+async function handleJSON(json) {
+    if (json.type == "readdir-error") {
+        var id = json.id;
+        var request = readdirRequests[id];
+        if (!request) {
+            return;
+        }
+
+        request.reject("Response error");
+        readdirRequests[id] = 0;
+        delete readdirRequests[id];
+        return;
+    }
+
+    if (json.type == "readdir-result") {
+        var id = json.id;
+        var request = readdirRequests[id];
+        if (!request) {
+            return;
+        }
+
+        if (!request.result) {
+            request.result = "";
+        }
+        request.resetTimeout();
+
+        request.result += json.c;
+
+        if (json.end) {
+            request.resolve(JSON.parse(request.result));
+        }
+        return;
+    }
+
+    if (json.type == "mkdir-error") {
+        var id = json.id;
+        var request = mkdirRequests[id];
+        if (!request) {
+            return;
+        }
+
+        request.reject("Response error");
+        mkdirRequests[id] = 0;
+        delete mkdirRequests[id];
+        return;
+    }
+
+    if (json.type == "mkdir-success") {
+        var id = json.id;
+        var request = mkdirRequests[id];
+        if (!request) {
+            return;
+        }
+
+        request.resolve();
+        return;
+    }
+}
+
 module.exports = {
     uploadFile,
-    sendDownloadRequest
+    sendDownloadRequest,
+    handleJSON,
+    requestReaddir,
+    requestMkdir
 };

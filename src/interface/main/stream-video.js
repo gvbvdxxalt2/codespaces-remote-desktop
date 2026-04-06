@@ -146,6 +146,11 @@ function handlePeerConnection(peerConn) {
             startUpdateLoop(peerConn);
         }
     });
+    peerConn.on("data", (data) => {
+        var json = JSON.parse(data);
+
+        handleJSON(json);
+    });
 }
 
 function getMousePosition(event, onElement, size) {
@@ -301,7 +306,7 @@ document.addEventListener("wheel", (event) => {
     }
 }, { passive: false });
 
-var {uploadFile} = require("./filesend.js");
+var {uploadFile,handleJSON} = require("./filesend.js");
 
 function sendUploadTest(peerConn) {
     var input = document.createElement("input");

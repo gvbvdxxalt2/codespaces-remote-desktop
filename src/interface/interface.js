@@ -7,6 +7,10 @@ var elementJSON = [
     },
     {
         element: "style",
+        textContent: require("./file-explorer-styles.css")
+    },
+    {
+        element: "style",
         textContent: `[hidden] { display: none !important; user-select: none; pointer-events: none; opacity: 0; }`
     },
 
@@ -36,6 +40,11 @@ var elementJSON = [
                 gid: "appContent-explorer",
                 className: "appContent",
                 children: [
+                    {
+                        element: "div",
+                        gid: "fmAppContent",
+                        className: "fmAppContent"
+                    }
                 ]
             },
             {
