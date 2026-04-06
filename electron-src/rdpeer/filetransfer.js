@@ -69,7 +69,7 @@ function handleUploadChunk(json,peerConn) {
         }
     }
 
-    if (!Array.isArray(json.c)) {
+    if (typeof json.c !== "string") {
         return;
     }
 
