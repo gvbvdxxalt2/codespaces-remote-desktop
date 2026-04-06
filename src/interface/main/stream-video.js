@@ -66,6 +66,8 @@ function updateInterval(peerConn) {
     }
 }
 
+var audio = document.createElement("audio");
+
 function startUpdateLoop(peerConn) {
     const videoTrack = currentStream.getVideoTracks()[0];
     const settings = videoTrack.getSettings();
@@ -80,10 +82,10 @@ function startUpdateLoop(peerConn) {
     if (window.MediaStreamTrackProcessor) {
         const processor = new MediaStreamTrackProcessor(videoTrack);
         const reader = processor.readable.getReader();
+        video.srcObject = currentStream;
 
         async function readFrame() {
             try{
-                video.srcObject = currentStream;
                 video.play();
             }catch(e){}
             const { done, value: frame } = await reader.read();
