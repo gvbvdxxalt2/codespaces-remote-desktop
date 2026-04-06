@@ -251,6 +251,9 @@ console.log(fileinfo);
 		},
 
 		onmove: async function(moved, srcpath, srcids, destfolder) {
+			window.alert(JSON.stringify(srcpath));
+			window.alert(JSON.stringify(srcids));
+			window.alert(JSON.stringify(destfolder));
             var entries = [];
 			moved(true, entries);
 		},

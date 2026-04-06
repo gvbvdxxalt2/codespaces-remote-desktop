@@ -74,7 +74,7 @@ function sendDownloadRequest(peerConn,filePath,sendOutside,ProgressMonitor) {
 
 var uploadQueue = {};
 var UPLOAD_SPEED = 15;
-var CHUNK_SIZE = 6000;
+var CHUNK_SIZE = 10000;
 
 function uploadFile(peerConn,targetPath,uint8array,sendOutside,onProgress = (cur,max) => {}) {
     return new Promise((resolve,reject) => {
