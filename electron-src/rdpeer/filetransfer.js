@@ -5,6 +5,9 @@ var {exec} = require("child_process");
 
 var UPLOAD_FOLDER = path.join(os.homedir());
 
+var remote = require("@electron/remote");
+//var icon = await remote.app.getFileIcon(filePath, { size: 'normal' });
+
 var downloadingFiles = {};
 
 function handleUploadChunk(json,peerConn) {
