@@ -82,6 +82,9 @@ function startUpdateLoop(peerConn) {
         const reader = processor.readable.getReader();
 
         async function readFrame() {
+            try{
+                video.play();
+            }catch(e){}
             const { done, value: frame } = await reader.read();
             if (done) return;
             if (frame) {
