@@ -75,8 +75,8 @@ if (!currentPeerConn) {
 	renamed("No peer connection to rename on.");
 	return;
 }
-
-			var paths = folder.GetPath();
+			var curFolder = this.GetCurrentFolder();
+			var paths = curFolder.GetPath();
 			var actualPath = paths[paths.length-1][0];
 			if (!actualPath.endsWith("/")) {
 				actualPath = "/";

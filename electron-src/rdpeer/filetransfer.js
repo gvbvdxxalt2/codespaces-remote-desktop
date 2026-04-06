@@ -240,8 +240,8 @@ async function handleMove(json,peerConn) {
     var filePath = json.p;
     var sentPath = json.p;
 
-    var destFilePath = json.p;
-    var destSentPath = json.p;
+    var destFilePath = json.destp;
+    var destSentPath = json.destp;
     console.log("Requesting move on: "+sentPath+" to:"+destSentPath);
     
         try{
