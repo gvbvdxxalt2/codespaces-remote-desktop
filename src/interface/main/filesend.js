@@ -2,11 +2,14 @@
 var downloadTransfers = {};
 
 function uint8ToJSONable(uint8) {
-    return Array.from(uint8);
+    return btoa(String.fromCharCode.apply(null, uint8));
 }
 
-function JSONableToUint8(jsonable) {
-    return Uint8Array.from(jsonable);
+function JSONableToUint8(base64) {
+    const binary = atob(base64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return bytes;
 }
 
 function sendDownloadRequest(peerConn,filePath,sendOutside,ProgressMonitor) {
@@ -74,7 +77,7 @@ function sendDownloadRequest(peerConn,filePath,sendOutside,ProgressMonitor) {
 
 var uploadQueue = {};
 var UPLOAD_SPEED = 15;
-var CHUNK_SIZE = 10000;
+var CHUNK_SIZE = 16384;
 
 function uploadFile(peerConn,targetPath,uint8array,sendOutside,onProgress = (cur,max) => {}) {
     return new Promise((resolve,reject) => {

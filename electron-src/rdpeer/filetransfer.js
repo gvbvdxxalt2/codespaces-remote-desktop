@@ -73,9 +73,9 @@ function handleUploadChunk(json,peerConn) {
         return;
     }
 
-    var chunk = Uint8Array.from(json.c);
+    var buffer = Buffer.from(json.c, 'base64');
     try{
-        writeStream.write(chunk);
+        writeStream.write(buffer);
     }catch(e){
         return;
     }
