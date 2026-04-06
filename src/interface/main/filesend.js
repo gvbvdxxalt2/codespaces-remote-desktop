@@ -186,7 +186,7 @@ function requestReaddir(peerConn,readdirPath,isOutside) {
                 reject("Request timeout");
                 readdirRequests[id] = 0;
                 delete readdirRequests[id];
-            },2500);
+            },10000);
         }
 
         resetTimeout();
@@ -238,6 +238,42 @@ function requestMkdir(peerConn,targetPath,isOutside) {
 
         peerConn.send(JSON.stringify({
                 type: "mkdir",
+                p: targetPath,
+                outside: isOutside,
+                id
+            }));
+    });
+}
+
+var newfileRequests = {};
+
+function requestNewFile(peerConn,targetPath,isOutside) {
+    var id = "r"+Date.now()+"-"+Math.round(Math.random()*999999);
+
+    return new Promise((resolve, reject) => {   
+        var timeout = null;
+        function resetTimeout() {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                reject("Request timeout");
+                newfileRequests[id] = 0;
+                delete newfileRequests[id];
+            },2500);
+        }
+
+        resetTimeout();
+
+        newfileRequests[id] = {
+            resolve: function (r) {
+                resolve(r);
+                clearTimeout(timeout);
+                newfileRequests[id] = 0;
+                delete newfileRequests[id];
+            }, reject, resetTimeout
+        };
+
+        peerConn.send(JSON.stringify({
+                type: "newfile",
                 p: targetPath,
                 outside: isOutside,
                 id
@@ -340,6 +376,30 @@ async function handleJSON(json) {
         return;
     }
 
+    if (json.type == "newfile-error") {
+        var id = json.id;
+        var request = newfileRequests[id];
+        if (!request) {
+            return;
+        }
+
+        request.reject("Response error");
+        newfileRequests[id] = 0;
+        delete newfileRequests[id];
+        return;
+    }
+
+    if (json.type == "newfile-success") {
+        var id = json.id;
+        var request = newfileRequests[id];
+        if (!request) {
+            return;
+        }
+
+        request.resolve();
+        return;
+    }
+
     if (json.type == "move-error") {
         var id = json.id;
         var request = moveRequests[id];
@@ -382,5 +442,6 @@ module.exports = {
     handleJSON,
     requestReaddir,
     requestMkdir,
-    requestMove
+    requestMove,
+    requestNewFile
 };

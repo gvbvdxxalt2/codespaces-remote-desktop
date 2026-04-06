@@ -234,6 +234,39 @@ function handleMkdir(json,peerConn) {
     });
 }
 
+function handleNewFile(json,peerConn) {
+    var id = json.id;
+
+    var filePath = json.p;
+    var sentPath = json.p;    
+        try{
+            if (!json.outside) {
+                filePath = path.join(UPLOAD_FOLDER,json.p);
+            }
+        }catch(e){
+            console.log(`[FT]: Unable to generate path for ${json.p}. Error: ${e}`);
+            return;
+        }
+
+    fs.writeFile(filePath, "", {}, (err) => {
+        if (err) {
+            try{
+                    peerConn.send(JSON.stringify({
+                        type: "newfile-error",
+                        id,
+                    }));
+                }catch(e){}
+        } else {
+            try{
+                    peerConn.send(JSON.stringify({
+                        type: "newfile-success",
+                        id,
+                    }));
+                }catch(e){}
+        }
+    });
+}
+
 async function handleMove(json,peerConn) {
     var id = json.id;
 
@@ -301,6 +334,9 @@ function handleFileTransferMessages(json,peerConn) {
     }
     if (json.type == "move") {
         handleMove(json,peerConn);
+    }
+    if (json.type == "newfile") {
+        handleNewFile(json,peerConn);
     }
 }
 

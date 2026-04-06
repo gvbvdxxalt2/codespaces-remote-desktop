@@ -4,7 +4,7 @@ if (window.FileExplorer) {
     FileExplorer = window.FileExplorer; //Weridly it defines window.FileExplorer but doesn't export to module.
 }
 
-var {requestReaddir,requestMkdir,requestMove} = require("./filesend.js");
+var {uploadFile,requestReaddir,requestMkdir,requestMove,requestNewFile} = require("./filesend.js");
 
 var currentPeerConn = null;
 
@@ -19,7 +19,33 @@ function getPathFromIds(ids) {
 			var baseDir = pathParts.join("/");
 			baseDir = baseDir.split("/").filter((p) => !!p).join("/"); //Double run to remove empty paths (again).
 			if (!baseDir.endsWith("/")) baseDir += "/";
+			if (!baseDir.startsWith("/")) baseDir = "/" + baseDir;
 			return baseDir;
+}
+
+async function setFolderEntriesFromReaddir(folder) {
+	try{
+					var baseDir = getPathFromJSFMFolder(folder);
+					var response = await requestReaddir(currentPeerConn,baseDir);
+
+					folder.SetEntries(
+						response.map((file) => {
+							var preview = file.stat.preview ? file.stat.preview : undefined;
+							//window.alert(preview);
+							return {
+								"name": file.name,   // The text displayed in the list
+								"type": file.stat.dir ? "folder" : "file",
+								"size": file.stat.size || 0,
+								"id":file.name,
+								"hash":file.name,
+								"thumb": preview
+							};
+						}));
+				}catch(e){
+					console.error(e);
+					this.SetNamedStatusBarText('folder', this.EscapeHTML('Failed to load folder.  '+e));
+					folder.SetEntries([]);
+				}
 }
 
 var explorerOpts = {
@@ -52,28 +78,7 @@ var explorerOpts = {
 			}
 
             if (this.IsMappedFolder(folder))  {
-				try{
-					var baseDir = getPathFromJSFMFolder(folder);
-					var response = await requestReaddir(currentPeerConn,baseDir);
-
-					folder.SetEntries(
-						response.map((file) => {
-							var preview = file.stat.preview ? file.stat.preview : undefined;
-							//window.alert(preview);
-							return {
-								"name": file.name,   // The text displayed in the list
-								"type": file.stat.dir ? "folder" : "file",
-								"size": file.stat.size || 0,
-								"id":file.name,
-								"hash":file.name,
-								"thumb": preview
-							};
-						}));
-				}catch(e){
-					console.error(e);
-					this.SetNamedStatusBarText('folder', this.EscapeHTML('Failed to load folder.  '+e));
-					folder.SetEntries([]);
-				}
+				setFolderEntriesFromReaddir(folder);
             }
         },
 
@@ -113,11 +118,7 @@ var explorerOpts = {
 			try{
 				var defaultName = 'New Folder '+Date.now();
 				var entry = { name: defaultName, type: 'folder', id: defaultName, hash: defaultName };
-				var paths = folder.GetPath();
-				var actualPath = paths[paths.length-1][0];
-				if (!actualPath.endsWith("/")) {
-					actualPath += "/";
-				}
+				var actualPath = getPathFromJSFMFolder(folder);
 				actualPath += entry.name;
 				await requestMkdir(currentPeerConn,actualPath);
 				setTimeout(() => {
@@ -129,64 +130,71 @@ var explorerOpts = {
 			}
 		},
 
-		onnewfile: function(created, folder) {
-console.log('onnewfile');
-			// Simulate network delay.
-			setTimeout(function() {
-				var entry = { name: 'New File.txt', type: 'file', id: 'asdfasdffile123', hash: 'asdfasdffile123' };
-
-				created(entry);
-			}, 250);
+		onnewfile: async function(created, folder) {
+			if (!currentPeerConn) {
+				created("No peer connection to make new file on.");
+				return;
+			}
+			try{
+				var defaultName = 'New File '+Date.now()+'.txt';
+				var entry = { name: defaultName, type: 'file', id: defaultName, hash: defaultName };
+				var actualPath = getPathFromJSFMFolder(folder);
+				actualPath += entry.name;
+				await requestNewFile(currentPeerConn,actualPath);
+				setTimeout(() => {
+					created(entry);
+				},10);
+			}catch(e){
+				console.error(e);
+				created(""+e);
+			}
 		},
 
-		oninitupload: function(startupload, fileinfo) {
+		oninitupload: async function(startupload, fileinfo) {
+			var _this = this;
+			if (!currentPeerConn) {
+				startupload("No peer connection to upload to.");
+				return;
+			}
 console.log('oninitupload');
 console.log(fileinfo.file);
 console.log(JSON.stringify(fileinfo.folder.GetPathIDs()));
 
 			if (fileinfo.type === 'dir')
 			{
-				// Create a directory.  This type only shows up if the directory is empty.
+				var folder = fileinfo.folder;
 
-				// Simulate network delay.
-				setTimeout(function() {
-
-					// Passing false as the second parameter to startupload will remove the item from the queue.
+				var actualPath = getPathFromJSFMFolder(folder);
+				try{
+					await requestMkdir(currentPeerConn,actualPath);
 					startupload(false);
-				}, 250);
+				}catch(e){
+					startupload(""+e);
+					return;
+				}
 			}
 			else
 			{
+				var folder = fileinfo.folder;
+				var actualPath = getPathFromJSFMFolder(folder);
+				actualPath += fileinfo.fullPath;
 				// For those who wish to handle file uploads via external libraries, fileinfo.file contains the File object.
-
-				// Simulate network delay.
-				setTimeout(function() {
-					// Set a URL, headers, and params to send with the file data to the server.
-					fileinfo.url = 'filemanager/';
-
-					fileinfo.headers = {
-					};
-
-					fileinfo.params = {
-						action: 'upload',
-						id: 'temp-12345',
-						path: JSON.stringify(fileinfo.folder.GetPathIDs()),
-						name: fileinfo.fullPath,
-						size: fileinfo.file.size,
-						xsrftoken: 'asdfasdf'
-					};
-
-					fileinfo.fileparam = 'file';
-
-					// Optional:  Send chunked uploads.  Requires the server to know how to put chunks back together.
-					fileinfo.chunksize = 1000000;
-
-					// Optional:  Automatic retry count for the file on failure.
-					fileinfo.retries = 3;
-
-					// Start the upload.
-					startupload(true);
-				}, 250);
+				var reader = new FileReader();
+				reader.onload = async function () {
+					var uint8array = new Uint8Array(reader.result);
+					try{
+						await uploadFile(
+							currentPeerConn,
+							actualPath || "upload.file",
+							uint8array
+						);
+					}catch(e){
+						window.alert(e);
+					}
+					await setFolderEntriesFromReaddir(folder);
+					startupload(false);
+				};
+				reader.readAsArrayBuffer(fileinfo.file);
 			}
 		},
 
@@ -232,16 +240,17 @@ console.log(fileinfo);
 
 		// Calculated information must be fully synchronous (i.e. no AJAX calls).  Chromium only.
 		ondownloadurl: function(result, folder, ids, entry) {
+			/*window.alert("ondownloadurl is called");
 			result.name = (ids.length === 1 ? (entry.type === 'file' ? entry.name : entry.name + '.zip') : 'download-' + Date.now() + '.zip');
-			result.url = 'http://127.0.0.1/filemanager/?action=download&xsrfdata=asdfasdfasdf&xsrftoken=asdfasdf&path=' + encodeURIComponent(JSON.stringify(folder.GetPathIDs())) + '&ids=' + encodeURIComponent(JSON.stringify(ids));
-		},
+				result.url = 'http://127.0.0.1/filemanager/?action=download&xsrfdata=asdfasdfasdf&xsrftoken=asdfasdf&path=' + encodeURIComponent(JSON.stringify(folder.GetPathIDs())) + '&ids=' + encodeURIComponent(JSON.stringify(ids));
+		*/},
 
 		oncopy: function(copied, srcpath, srcids, destfolder) {
             var entries = [];
             copied(true, entries);
 		},
 
-		onmove: function(moved, srcpath, srcids, destfolder) {
+		onmove: async function(moved, srcpath, srcids, destfolder) {
             var entries = [];
 			moved(true, entries);
 		},
