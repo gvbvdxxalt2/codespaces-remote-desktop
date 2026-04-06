@@ -245,6 +245,43 @@ function requestMkdir(peerConn,targetPath,isOutside) {
     });
 }
 
+var moveRequests = {};
+
+function requestMove(peerConn,startPath,endPath,isOutside) {
+    var id = "r"+Date.now()+"-"+Math.round(Math.random()*999999);
+
+    return new Promise((resolve, reject) => {   
+        var timeout = null;
+        function resetTimeout() {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                reject("Request timeout");
+                moveRequests[id] = 0;
+                delete moveRequests[id];
+            },2500);
+        }
+
+        resetTimeout();
+
+        moveRequests[id] = {
+            resolve: function (r) {
+                resolve(r);
+                clearTimeout(timeout);
+                moveRequests[id] = 0;
+                delete moveRequests[id];
+            }, reject, resetTimeout
+        };
+
+        peerConn.send(JSON.stringify({
+                type: "move",
+                p: startPath,
+                destp: endPath,
+                outside: isOutside,
+                id
+            }));
+    });
+}
+
 async function handleJSON(json) {
     if (json.type == "readdir-error") {
         var id = json.id;
@@ -302,6 +339,41 @@ async function handleJSON(json) {
         request.resolve();
         return;
     }
+
+    if (json.type == "move-error") {
+        var id = json.id;
+        var request = moveRequests[id];
+        if (!request) {
+            return;
+        }
+
+        request.reject("Response error");
+        moveRequests[id] = 0;
+        delete moveRequests[id];
+        return;
+    }
+
+    if (json.type == "move-success") {
+        var id = json.id;
+        var request = moveRequests[id];
+        if (!request) {
+            return;
+        }
+
+        request.resolve();
+        return;
+    }
+
+    if (json.type == "move-ping") {
+        var id = json.id;
+        var request = moveRequests[id];
+        if (!request) {
+            return;
+        }
+
+        request.resetTimeout();
+        return;
+    }
 }
 
 module.exports = {
@@ -309,5 +381,6 @@ module.exports = {
     sendDownloadRequest,
     handleJSON,
     requestReaddir,
-    requestMkdir
+    requestMkdir,
+    requestMove
 };

@@ -4,7 +4,7 @@ if (window.FileExplorer) {
     FileExplorer = window.FileExplorer; //Weridly it defines window.FileExplorer but doesn't export to module.
 }
 
-var {requestReaddir,requestMkdir} = require("./filesend.js");
+var {requestReaddir,requestMkdir,requestMove} = require("./filesend.js");
 
 var currentPeerConn = null;
 
@@ -47,12 +47,15 @@ var explorerOpts = {
 
 					folder.SetEntries(
 						response.map((file) => {
+							var preview = file.stat.preview ? file.stat.preview : undefined;
+							//window.alert(preview);
 							return {
 								"name": file.name,   // The text displayed in the list
 								"type": file.stat.dir ? "folder" : "file",
 								"size": file.stat.size || 0,
 								"id":file.path,
-								"hash":file.path
+								"hash":file.path,
+								"thumb": preview
 							};
 						}));
 				}catch(e){
@@ -63,20 +66,32 @@ var explorerOpts = {
             }
         },
 
-        onrename: function(renamed, folder, entry, newname) {
+        onrename: async function(renamed, folder, entry, newname) {
 console.log('onrename');
 console.log(entry);
 console.log(newname);
 
-			// Simulate network delay.
-			setTimeout(function() {
-				// The entry is a copy of the original, so it is okay to modify any aspect of it, including id.
-				// Passing in a completely new entry to the renamed() callback is also okay.
-				entry.id = newname;
-				entry.name = newname;
+if (!currentPeerConn) {
+	renamed("No peer connection to rename on.");
+	return;
+}
 
+			var paths = folder.GetPath();
+			var actualPath = paths[paths.length-1][0];
+			if (!actualPath.endsWith("/")) {
+				actualPath = "/";
+			}
+
+			var oldPath = actualPath + entry.name;
+			var newPath = actualPath + newname;
+
+			try{
+				await requestMove(currentPeerConn,oldPath,newPath);
+				entry.name = newname;
 				renamed(entry);
-			}, 250);
+			}catch(e){
+				renamed(""+e);
+			}
 		},
 
 		onopenfile: function(folder, entry) {

@@ -2,6 +2,7 @@ var fs = require("fs");
 var os = require("os");
 var path = require("path");
 var {exec} = require("child_process");
+var fse = require('fs-extra');
 
 var UPLOAD_FOLDER = path.join(os.homedir());
 
@@ -9,6 +10,7 @@ var remote = require("@electron/remote");
 //var icon = await remote.app.getFileIcon(filePath, { size: 'normal' });
 
 var downloadingFiles = {};
+
 
 function handleUploadChunk(json,peerConn) {
     if (!peerConn.__ftId) {
@@ -111,15 +113,34 @@ function handleReaddir(json,peerConn) {
             return;
         }
 
-    function generateFiles(files) {
+    async function statAsync(statPath) {
+        return new Promise((resolve,reject) => {
+            fs.stat(statPath, (err,files) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(files);
+                }
+            })
+        });
+    }
+
+    async function generateFiles(files) {
         var output = [];
         for (var file of files) {
             var stat = {};
+            var preview = undefined;
+            var absolutePath = path.join(filePath,file);
             try{
-                var s = fs.statSync(path.join(filePath,file));
+                var icon = await remote.app.getFileIcon(absolutePath, { size: 'large' });
+                preview = icon.toDataURL();
+            }catch(e){}
+            try{
+                var s = await statAsync(absolutePath);
                 stat = {
                     dir: s.isDirectory(),
-                    size: s.size
+                    size: s.size,
+                    preview
                 };
             }catch(e){}
             output.push({
@@ -132,7 +153,7 @@ function handleReaddir(json,peerConn) {
         return output;
     }
 
-    fs.readdir(filePath, (err,files) => {
+    fs.readdir(filePath, async (err,files) => {
         if (err) {
             try{
                 peerConn.send(JSON.stringify({
@@ -141,11 +162,11 @@ function handleReaddir(json,peerConn) {
                 }));
             }catch(e){}
         } else {
-            var resultObject = generateFiles(files);
+            var resultObject = await generateFiles(files);
             var resultSend = JSON.stringify(resultObject);
 
             var chunkNum = 0;
-            var maxSize = 100;
+            var maxSize = 200;
 
             var interval = setInterval(() => {
                 var chunk = "";
@@ -184,9 +205,7 @@ function handleMkdir(json,peerConn) {
     var id = json.id;
 
     var filePath = json.p;
-    var sentPath = json.p;
-    console.log("Requesting mkdir on: "+sentPath);
-    
+    var sentPath = json.p;    
         try{
             if (!json.outside) {
                 filePath = path.join(UPLOAD_FOLDER,json.p);
@@ -215,6 +234,61 @@ function handleMkdir(json,peerConn) {
     });
 }
 
+async function handleMove(json,peerConn) {
+    var id = json.id;
+
+    var filePath = json.p;
+    var sentPath = json.p;
+
+    var destFilePath = json.p;
+    var destSentPath = json.p;
+    console.log("Requesting move on: "+sentPath+" to:"+destSentPath);
+    
+        try{
+            if (!json.outside) {
+                filePath = path.join(UPLOAD_FOLDER,json.p);
+            }
+        }catch(e){
+            console.log(`[FT]: Unable to generate path for ${json.p}. Error: ${e}`);
+            return;
+        }
+
+
+        try{
+            if (!json.outside) {
+                destFilePath = path.join(UPLOAD_FOLDER,json.destp);
+            }
+        }catch(e){
+            console.log(`[FT]: Unable to generate path for ${json.destp}. Error: ${e}`);
+            return;
+        }
+
+    var interval = setInterval(() => {
+                try{
+                    peerConn.send(JSON.stringify({
+                        type: "move-ping",
+                        id,
+                    }));
+                }catch(e){
+
+                }
+            },100);
+            try{
+                await fse.move(filePath, destFilePath, { overwrite: true });
+
+                    peerConn.send(JSON.stringify({
+                        type: "move-success",
+                        id,
+                    }));
+                }catch(e){
+                    peerConn.send(JSON.stringify({
+                        type: "move-error",
+                        id,
+                    }));
+                }
+                clearInterval(interval);
+}
+
 function handleFileTransferMessages(json,peerConn) {
     if (json.type == "upload") {
         handleUploadChunk(json,peerConn);
@@ -224,6 +298,9 @@ function handleFileTransferMessages(json,peerConn) {
     }
     if (json.type == "mkdir") {
         handleMkdir(json,peerConn);
+    }
+    if (json.type == "move") {
+        handleMove(json,peerConn);
     }
 }
 
