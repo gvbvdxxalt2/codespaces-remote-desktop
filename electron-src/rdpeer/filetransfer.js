@@ -11,6 +11,17 @@ var remote = require("@electron/remote");
 
 var downloadingFiles = {};
 
+function uint8ToJSONable(data) {
+    return String.fromCharCode.apply(null, data);
+}
+
+function JSONableToUint8(data) {
+    const binary = data;
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return bytes;
+}
+
 
 function handleUploadChunk(json,peerConn) {
     if (!peerConn.__ftId) {
@@ -69,13 +80,9 @@ function handleUploadChunk(json,peerConn) {
         }
     }
 
-    if (typeof json.c !== "string") {
-        return;
-    }
-
-    var buffer = Buffer.from(json.c, 'base64');
+    var chunkdata = JSONableToUint8(json.c);
     try{
-        writeStream.write(buffer);
+        writeStream.write(chunkdata);
     }catch(e){
         return;
     }
