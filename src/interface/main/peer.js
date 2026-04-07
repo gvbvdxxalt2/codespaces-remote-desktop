@@ -7,9 +7,8 @@ var currentPeer = null;
 
 function getNewPeer() {
     currentPeer = new peer({
-        initiator: false,
+        initiator: true,
         config: peerConfig,
-        channelConfig: { ordered: false, maxRetransmits: 0 },
         trickle: true,
         sdpTransform: function (sdp) {
             return sdp.replace(/a=mid:video\r\n/g, 'a=mid:video\r\na=extmap-allow-mixed\r\n');

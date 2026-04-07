@@ -38,9 +38,8 @@ function getNewRDPeer() {
     }
 
     var peerConn = new peer({
-        initiator: true,
+        initiator: false,
         config: peerConfig,
-        channelConfig: { ordered: false, maxRetransmits: 0 },
         trickle: true,
         stream: desktopStream
     });

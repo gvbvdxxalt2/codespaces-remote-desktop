@@ -97,7 +97,7 @@ function startUpdateLoop(peerConn) {
                 try{frame.close();}catch(e){}
             }
         }
-        setInterval(readFrame,1000/100);
+        setInterval(readFrame,1000/50);
     } else {
         // Fallback for non-supported browsers
         video.srcObject = currentStream;
@@ -142,7 +142,7 @@ function startInputLoop(peerConn) {
                 previousMousePos = Array.from(mousePos);
             }
         }
-    }, 1000 / 64);
+    }, 1000 / 50);
 }
 
 function handlePeerConnection(peerConn) {

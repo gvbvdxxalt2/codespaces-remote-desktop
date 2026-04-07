@@ -182,17 +182,28 @@ console.log(JSON.stringify(fileinfo.folder.GetPathIDs()));
 				var reader = new FileReader();
 				reader.onload = async function () {
 					var uint8array = new Uint8Array(reader.result);
+					var uploadid = 'message';
+					var tracker = _this.CreateProgressTracker(() => {});
+					tracker.finishmessage = "Upload finished";
+					tracker.uploading = 1;
+					tracker.itemsdone = 0;
 					try{
 						await uploadFile(
 							currentPeerConn,
-							actualPath || "upload.file",
-							uint8array
+							actualPath,
+							uint8array,
+							false,
+							(cur,max) => {
+								tracker.totalbytes = cur;
+								var percent = (cur/max)*100;
+							}
 						);
 					}catch(e){
-						window.alert(e);
+						this.SetNamedStatusBarText(uploadid, this.EscapeHTML(`Upload error for ${fileinfo.fullPath}: ${e}`));
 					}
 					await setFolderEntriesFromReaddir(folder);
 					startupload(false);
+					tracker.itemsdone += 1;
 				};
 				reader.readAsArrayBuffer(fileinfo.file);
 			}
