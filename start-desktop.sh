@@ -24,7 +24,7 @@ rm -rf /tmp/.X11-unix/X99 /tmp/.X99-lock /tmp/lxpanel.pid
 
 # --- 3. ENVIRONMENT ---
 export DISPLAY=:99
-export RESOLUTION="1366x768"
+export RESOLUTION="2000x1000"
 export XDG_CONFIG_DIRS=/etc/xdg
 export XDG_DATA_DIRS=/usr/share
 # Force the theme in the environment
