@@ -7,7 +7,7 @@ var currentPeer = null;
 
 function getNewPeer() {
     currentPeer = new peer({
-        initiator: true,
+        initiator: false,
         config: peerConfig,
         trickle: true,
         sdpTransform: function (sdp) {

@@ -6,6 +6,7 @@ var { handleInputTypes, handleInputClose } = require("./inputs.js");
 var { handleFileTransferMessages, handleFTClose } = require("./filetransfer.js");
 
 async function initStream() {
+  try{
     desktopStream = await navigator.mediaDevices.getDisplayMedia({
       mandatory: {
         chromeMediaSource: 'desktop',
@@ -30,6 +31,10 @@ async function initStream() {
       surfaceSwitching: "include",
       monitorTypeSurfaces: "include",
     });
+  }catch(e){
+    console.log("Failed to start stream "+e);
+    setTimeout(initStream,100);
+  }
 }
 
 function getNewRDPeer() {
@@ -38,7 +43,7 @@ function getNewRDPeer() {
     }
 
     var peerConn = new peer({
-        initiator: false,
+        initiator: true,
         config: peerConfig,
         trickle: true,
         stream: desktopStream
