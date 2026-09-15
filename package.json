@@ -28,9 +28,9 @@
     "ws": "^8.19.0"
   },
   "scripts": {
+    "start": "node main.js",
     "rebuild": "electron-rebuild -f -w robotjs",
-    "post-install": "chmod +x * && ./setup-desktop.sh && ./start-desktop.sh && yarn rebuild",
-    "start": "chmod +x * && ./start.sh",
+    "startserv": "chmod +x * && ./start.sh",
     "build:watch": "webpack --watch",
     "electron:start": "ELECTRON_DISABLE_SECURITY_WARNINGS=true DISPLAY=:99 NO_AT_BRIDGE=1 electron .",
     "dev": "concurrently --kill-others --names \"WEBPACK,ELECTRON\" -c \"blue,green\" \"npm run build:watch\" \"npm run electron:start\""

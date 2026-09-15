@@ -1,6 +1,7 @@
 var peerConfig = require("./peer-config.js");
 var peer = require("simple-peer");
 var desktopStream = null;
+var process = require("process");
 
 var { handleInputTypes, handleInputClose } = require("./inputs.js");
 var { handleFileTransferMessages, handleFTClose } = require("./filetransfer.js");
@@ -31,9 +32,10 @@ async function initStream() {
       surfaceSwitching: "include",
       monitorTypeSurfaces: "include",
     });
+    console.log("[desktop stream ready]");
   }catch(e){
     console.log("[desktop stream error]"+e);
-    setTimeout(initStream,100);
+    process.exit(1000);
   }
 }
 
