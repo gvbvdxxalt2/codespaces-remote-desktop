@@ -32,7 +32,7 @@ async function initStream() {
       monitorTypeSurfaces: "include",
     });
   }catch(e){
-    console.log("Failed to start stream "+e);
+    console.log("[desktop stream error]"+e);
     setTimeout(initStream,100);
   }
 }
