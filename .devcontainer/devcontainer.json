@@ -1,4 +1,4 @@
 {
     "name": "Codespaces Desktop Environment",
-    "postCreateCommand": "yarn install && yarn start"
+    "postCreateCommand": "echo done"
 }
