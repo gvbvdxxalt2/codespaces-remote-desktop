@@ -3,7 +3,6 @@ var fs = require("fs");
 var process = require("process");
 var {spawn} = require("child_process");
 var readline = require("readline");
-const { resolve } = require("path-browserify");
 
 function newRL() {
     return new readline.Interface(process.stdin, process.stdout);
