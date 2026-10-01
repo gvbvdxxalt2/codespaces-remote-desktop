@@ -1,8 +1,13 @@
 var path = require("path");
 var fs = require("fs");
 var process = require("process");
-var {spawn} = require("child_process");
+var childprocess = require("child_process");
 var readline = require("readline");
+
+function spawn(name,args,...args2) {
+    console.log("Run: "+`${name} ${args.join(" ")}`);
+    return childprocess.spawn(name,args,...args2);
+}
 
 function newRL() {
     return new readline.Interface(process.stdin, process.stdout);
@@ -31,11 +36,30 @@ function quickChmod(file) {
     });
 }
 
-function npmInstall(resolve, reject) {
-    var proc = spawn("npm",["install"], {cwd: __dirname});
+function npmInstallYarn(resolve, reject) {
+    var proc = spawn("npm",["install","yarn","--global","--force"], {cwd: __dirname});
     proc.stdout.on("data", (content) => {
         //console.log(""+content);
     });
+    proc.on("exit", (code) => {
+        if (code !== 0) {
+            console.log("Non zero exit code for npm install: "+code);
+            process.exit(1);
+            return;
+        }
+
+        npmInstall(resolve, reject);
+    });
+}
+
+function npmInstall(resolve, reject) {
+    var proc = spawn("yarn",["install"], {cwd: __dirname});
+    proc.stdout.on("data", (content) => {
+        //console.log(""+content);
+    });
+    proc.stderr.on("data", (content) => {
+        console.log(""+content);
+    })
     proc.on("exit", (code) => {
         if (code !== 0) {
             console.log("Non zero exit code for npm install: "+code);
@@ -48,7 +72,7 @@ function npmInstall(resolve, reject) {
 }
 
 function npmRebuild(resolve, reject) {
-    var proc = spawn("npm",["run","rebuild"], {cwd: __dirname});
+    var proc = spawn("yarn",["run","rebuild"], {cwd: __dirname});
     proc.stdout.on("data", (content) => {
     });
     proc.on("exit", (code) => {
@@ -74,7 +98,7 @@ function setupDesktop(resolve, reject) {
             return;
         }
 
-        npmInstall(resolve, reject);
+        npmInstallYarn(resolve, reject);
     });
 }
 
@@ -109,7 +133,7 @@ function startDesktop(next) {
 
 function desktopServer() {
     try{processes.serv.exit();}catch(e){}
-    var proc = spawn("npm",["run","startserv"], {cwd: __dirname});
+    var proc = spawn("yarn",["run","startserv"], {cwd: __dirname});
     processes.serv = proc;
     proc.stdout.on("data", (content) => {
         if ((""+content).indexOf("[desktop stream ready]") > -1) {
